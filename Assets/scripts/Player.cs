@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Player : MonoBehaviour {
 
-	private string name;
+	private string playerName;
 	private int number;
 	public List<Color> colors;
 
@@ -24,7 +24,7 @@ public class Player : MonoBehaviour {
 
 	public void SetNumber(int number) {
 		this.number = number;
-		playerMovement.SetupMovementLabels(number);
-		gameObject.GetComponent<SpriteRenderer>().color = colors[number-1];
+		playerMovement.SetupMovementLabels(this.number);
+		gameObject.GetComponent<SpriteRenderer>().color = colors[this.number-1];
 	}
 }
