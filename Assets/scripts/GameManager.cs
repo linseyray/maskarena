@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class ArenaController : MonoBehaviour {
+public class GameManager : MonoBehaviour {
 
 	public int nrPlayers;
 
