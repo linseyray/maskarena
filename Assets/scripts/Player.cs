@@ -104,8 +104,10 @@ public class Player : MonoBehaviour {
 
 		// make player fall behind platform
 		Debug.Log(tag);
-		if (tag == "TopTrigger")
+		if (tag == "TopTrigger") {
 			bodyRenderer.sortingLayerName = "FallingObjects";
+			maskRenderer.sortingLayerName = "FallingObjects";
+		}
 	}
 
 	private void StopFalling() {
