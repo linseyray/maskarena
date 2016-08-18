@@ -113,6 +113,7 @@ public class Player : MonoBehaviour {
 		maskRenderer.sprite = Sprite.Instantiate(defaultMask);
 		maskRenderer.enabled = true;
 		hasMask = true;
+		UnmuteTrack ();
 	}
 
 	private void removeMask(){
@@ -122,6 +123,7 @@ public class Player : MonoBehaviour {
 			maskGameobject.GetComponent<SpriteRenderer>().enabled = false;
 		}
 		// TODO: remove mask sprite from player object
+		MuteTrack();
 	}
 
 	public void specialAction(){
@@ -153,5 +155,19 @@ public class Player : MonoBehaviour {
 
 	private void ShakeCamera() {
 		Camera.main.GetComponent<CameraShake> ().StartShake (0.2f, 0.2f);
+	}
+
+	private void UnmuteTrack() {
+		AudioLoop loop = (AudioLoop)GetComponent ("AudioLoop");
+		if (loop != null) {
+			loop.UnmuteRandomTrack ();
+		}
+	}
+
+	private void MuteTrack() {
+		AudioLoop loop = (AudioLoop)GetComponent("AudioLoop");
+		if (loop != null) {
+			loop.MuteRandomTrack ();
+		}
 	}
 }
