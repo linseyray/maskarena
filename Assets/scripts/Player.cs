@@ -170,16 +170,14 @@ public class Player : MonoBehaviour {
 	}
 
 	private void UnmuteTrack() {
-		AudioLoop loop = (AudioLoop)GetComponent ("AudioLoop");
-		if (loop != null) {
-			loop.UnmuteRandomTrack ();
-		}
+		GameObject manager = GameObject.Find ("AudioManager");
+		AudioLoop loop = manager.GetComponent<AudioLoop> ();
+		loop.UnmuteRandomTrack ();
 	}
 
 	private void MuteTrack() {
-		AudioLoop loop = (AudioLoop)GetComponent("AudioLoop");
-		if (loop != null) {
-			loop.MuteRandomTrack ();
-		}
+		GameObject manager = GameObject.Find ("AudioManager");
+		AudioLoop loop = manager.GetComponent<AudioLoop> ();
+		loop.MuteRandomTrack ();
 	}
 }
