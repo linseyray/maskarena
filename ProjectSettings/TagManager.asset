@@ -7,6 +7,10 @@ TagManager:
   - Player
   - Mask
   - Hole
+  - PlayerCollider
+  - TopTrigger
+  - SideTrigger
+  - BottomTrigger
   layers:
   - Default
   - TransparentFX
@@ -43,6 +47,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: FallingObjects
+    uniqueID: 452024115
     locked: 0
   - name: Background
     uniqueID: 2319148313

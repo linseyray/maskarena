@@ -31,7 +31,7 @@ public class HitController : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D other) {
-		if (other.gameObject.tag == "Player") {
+		if (other.gameObject.tag == "Player") {	
 			if (currentHitType == HitType.NONE)
 				// No special hit, physics will just push
 				return;
