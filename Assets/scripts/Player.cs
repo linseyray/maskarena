@@ -14,6 +14,7 @@ public class Player : MonoBehaviour {
 	private Animator animator;
 	public SpriteRenderer bodyRenderer; //body
 	public SpriteRenderer maskRenderer; //body
+	public GameObject maskGameobject;
 	private PlayerMovement playerMovement;
 
 	public float defaultMaskTimeout = 5.0f;
@@ -26,7 +27,7 @@ public class Player : MonoBehaviour {
 	// temporary variables
 	public Sprite defaultMask;
 
-	void Awake() {
+void Awake() {
 		playerMovement = gameObject.GetComponent<PlayerMovement>();
 		animator = gameObject.GetComponentInChildren<Animator>();
 	}
@@ -74,7 +75,6 @@ public class Player : MonoBehaviour {
 		// idea: if(type == Mask.TYPES.specialLongDurationMask) maskTimeLeft = 3*defaultMaskTimeout;
 
 		// TODO: add mask sprite to player object
-		SpriteRenderer maskRenderer =  maskGameobject.GetComponent<SpriteRenderer>();
 		maskRenderer.sprite = Sprite.Instantiate(defaultMask);
 		maskRenderer.enabled = true;
 		hasMask = true;
