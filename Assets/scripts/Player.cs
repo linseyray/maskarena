@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Player : MonoBehaviour {
 
-	public enum PlayerState { IDLE = 0, RUNNING = 1, DASHING = 2 };
+	public enum PlayerState { IDLE = 0, RUNNING = 1, DASHING = 2, DEAD };
 	private PlayerState currentState = PlayerState.IDLE;
 
 	private string name;
@@ -14,6 +14,17 @@ public class Player : MonoBehaviour {
 	private Animator animator;
 	private SpriteRenderer spriteRenderer;
 	private PlayerMovement playerMovement;
+
+	public float defaultMaskTimeout = 5.0f;
+	private bool hasMask = false;
+	private float maskTimeLeft;
+	private Mask.TYPES maskType;
+
+	public int score {get;set;}
+
+	// temporary variables
+	public Sprite defaultMask;
+
 
 	void Awake() {
 		playerMovement = gameObject.GetComponent<PlayerMovement>();
@@ -50,4 +61,41 @@ public class Player : MonoBehaviour {
 	public PlayerState GetCurrentState() {
 		return currentState;
 	}
+
+	public void ReceiveMask(Mask.TYPES type){
+		this.maskType = type;
+		maskTimeLeft = defaultMaskTimeout;
+		// idea: if(type == Mask.TYPES.specialLongDurationMask) maskTimeLeft = 3*defaultMaskTimeout;
+
+		// TODO: add mask sprite to player object
+		SpriteRenderer maskRenderer = maskGameobject.GetComponent<SpriteRenderer>();
+		maskRenderer.sprite = Sprite.Instantiate(defaultMask);
+		maskRenderer.enabled = true;
+		hasMask = true;
+	}
+
+	private void removeMask(){
+		hasMask = false;
+		if (maskGameobject) {
+			// for now make mask invisible 
+			maskGameobject.GetComponent<SpriteRenderer>().enabled = false;
+		}
+		// TODO: remove mask sprite from player object
+	}
+
+	public void specialAction(){
+		if(hasMask) {
+			switch(maskType) {
+			default:
+				break;
+			}
+		}
+		
+	}
+
+	public void increaseScore() {
+		this.score += 1;
+	}
+
+
 }
