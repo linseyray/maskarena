@@ -12,7 +12,11 @@ public class Player : MonoBehaviour {
 	public List<Color> colors;
 
 	private Animator animator;
+	public SpriteRenderer bodyRenderer; //body
+	public SpriteRenderer maskRenderer; //body
 	private SpriteRenderer spriteRenderer;
+
+	public GameObject maskGameobject;
 	private PlayerMovement playerMovement;
 
 	public float defaultMaskTimeout = 5.0f;
@@ -25,17 +29,21 @@ public class Player : MonoBehaviour {
 	// temporary variables
 	public Sprite defaultMask;
 
-
-	void Awake() {
+void Awake() {
 		playerMovement = gameObject.GetComponent<PlayerMovement>();
-		spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 		animator = gameObject.GetComponentInChildren<Animator>();
 	}
 
 	void Start () {
 	}
-	
+
 	void Update () {
+		if(hasMask){
+			maskTimeLeft -= Time.deltaTime;
+			if(maskTimeLeft < 0) {
+				removeMask();
+			}
+		}
 	}
 
 	public void SetNumber(int number) {
@@ -43,7 +51,7 @@ public class Player : MonoBehaviour {
 		playerMovement.SetupMovementLabels(number);
 		spriteRenderer.color = colors[number-1];
 	}
-		
+
 	public void GoToState(PlayerState newState) {
 		animator.SetInteger("state", (int) newState);
 		currentState = newState;
@@ -68,7 +76,6 @@ public class Player : MonoBehaviour {
 		// idea: if(type == Mask.TYPES.specialLongDurationMask) maskTimeLeft = 3*defaultMaskTimeout;
 
 		// TODO: add mask sprite to player object
-		SpriteRenderer maskRenderer = maskGameobject.GetComponent<SpriteRenderer>();
 		maskRenderer.sprite = Sprite.Instantiate(defaultMask);
 		maskRenderer.enabled = true;
 		hasMask = true;
@@ -77,7 +84,7 @@ public class Player : MonoBehaviour {
 	private void removeMask(){
 		hasMask = false;
 		if (maskGameobject) {
-			// for now make mask invisible 
+			// for now make mask invisible
 			maskGameobject.GetComponent<SpriteRenderer>().enabled = false;
 		}
 		// TODO: remove mask sprite from player object
@@ -90,12 +97,9 @@ public class Player : MonoBehaviour {
 				break;
 			}
 		}
-		
 	}
 
 	public void increaseScore() {
 		this.score += 1;
 	}
-
-
 }
