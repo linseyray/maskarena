@@ -44,6 +44,9 @@ public class HitController : MonoBehaviour {
 			// Hit the other player
 			other.gameObject.GetComponent<Player>().TakeHit(impactDirection, forceStrength);
 			PlayHitSound();
+
+			// Reduce sliding after hit
+			rigidBody2D.velocity = new Vector2(0,0);
 		}
 	}
 
