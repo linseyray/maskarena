@@ -6,6 +6,7 @@ using System.Collections;
 
 public class HitDetector : MonoBehaviour {
 
+	public Rigidbody2D rigidBody2D; // ours, for impact direction calculation
 	public enum HitType { NONE, DASH };
 	private HitType currentHitType;
 
@@ -20,10 +21,12 @@ public class HitDetector : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D other) {
 		if (other.gameObject.tag == "Player") {
-			Vector2 impactDirection;
-			float forceStrength;
+			Vector2 impactDirection = rigidBody2D.velocity; // the direction we're moving in
+			impactDirection.Normalize();
+			float forceStrength =  10; // dependent on mask type
+
 			// Hit the other player
-			other.gameObject.GetComponent<Player>().TakeHit();
+			other.gameObject.GetComponent<Player>().TakeHit(impactDirection, forceStrength);
 		}
 	}
 }
