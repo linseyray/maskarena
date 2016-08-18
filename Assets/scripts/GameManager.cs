@@ -40,13 +40,11 @@ public class GameManager : MonoBehaviour {
 				}
 				if(numberOfPlayersAlive < 2) {
 					lastStanding.increaseScore();
-					if(lastStanding.score > WINNING_SCORE) {
-						
-					}
+					if(lastStanding.score >= WINNING_SCORE) {
+						gamestate = Gamestates.WINNNGMATCH;
+					} else {
 					gamestate = Gamestates.WINNINGROUND;
-				}
-				if() {
-					
+					}
 				}
 				break;
 			}
