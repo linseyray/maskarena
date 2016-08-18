@@ -135,17 +135,11 @@ public class Player : MonoBehaviour {
 	}
 
 	// Players takes a hit through dashes, boomerangs, projectiles....
-	//public void TakeHit(Vector2 impactDirection, float forceStrength) {
-	public void TakeHit() {
+	public void TakeHit(Vector2 impactDirection, float forceStrength) {
 		// Play animation
 		// Add force
+		rigidBody2D.AddForce(impactDirection * forceStrength, ForceMode2D.Impulse);
 		ShakeCamera();
-
-	}
-
-	void OnCollisionEnter2D(Collision2D collision) {
-		Debug.Log ("collision done");
-		TakeHit ();
 	}
 
 	private void ShakeCamera() {
