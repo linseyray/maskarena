@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour {
 		switch(gamestate) {
 		case Gamestates.ROUND: {
 				int numberOfPlayersAlive = 0;
-				Player lastStanding;
+				Player lastStanding = null;
 				foreach (var p in players) {
 					if(p.GetComponent<Player>().GetCurrentState()!=Player.PlayerState.DEAD) {
 						numberOfPlayersAlive++;

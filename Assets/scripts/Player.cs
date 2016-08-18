@@ -14,7 +14,6 @@ public class Player : MonoBehaviour {
 	private Animator animator;
 	public SpriteRenderer bodyRenderer; //body
 	public SpriteRenderer maskRenderer; //body
-	private SpriteRenderer spriteRenderer;
 
 	public GameObject maskGameobject;
 	private PlayerMovement playerMovement;
@@ -22,7 +21,7 @@ public class Player : MonoBehaviour {
 	public float defaultMaskTimeout = 5.0f;
 	private bool hasMask = false;
 	private float maskTimeLeft;
-	private Mask.TYPES maskType;
+	public Mask.TYPES maskType;
 
 	public int score {get;set;}
 
@@ -49,7 +48,7 @@ void Awake() {
 	public void SetNumber(int number) {
 		this.number = number;
 		playerMovement.SetupMovementLabels(number);
-		spriteRenderer.color = colors[number-1];
+		bodyRenderer.color = colors[number-1];
 	}
 
 	public void GoToState(PlayerState newState) {
