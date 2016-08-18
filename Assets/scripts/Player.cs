@@ -78,10 +78,6 @@ void Awake() {
 		// TODO: add mask sprite to player object
 		maskRenderer.sprite = Sprite.Instantiate(defaultMask);
 		maskRenderer.enabled = true;
-		// TODO: add mask sprite to player object
-		SpriteRenderer maskRenderer = maskGameobject.GetComponent<SpriteRenderer>();
-		maskRenderer.sprite = Sprite.Instantiate(defaultMask);
-		maskRenderer.enabled = true;
 		hasMask = true;
 	}
 
