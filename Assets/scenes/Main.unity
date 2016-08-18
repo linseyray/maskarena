@@ -3,7 +3,7 @@
 --- !u!29 &1
 SceneSettings:
   m_ObjectHideFlags: 0
-  m_PVSData:
+  m_PVSData: 
   m_PVSObjectsArray: []
   m_PVSPortalsArray: []
   m_OcclusionBakeSettings:
@@ -1026,9 +1026,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1192603494}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cf6d838258554c658898df701b78447, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Script: {fileID: 11500000, guid: f63ea14b4b0df3b479845947a228c21c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   sources:
   - {fileID: 1827842187}
   - {fileID: 786687070}
@@ -1090,7 +1090,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 0
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_SubsetIndices:
+  m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
@@ -1137,7 +1137,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
-  m_WarningMessage:
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1581482515
@@ -1339,9 +1339,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1587986151}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a010f2186d0744fdeb62387ded689335, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Script: {fileID: 11500000, guid: 1e05a1eecac684e46a662a628919321b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1693383534
 GameObject:
   m_ObjectHideFlags: 0
@@ -1571,8 +1571,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63def1ab6bd0f4742bafc0a2d9f42d08, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   objectPrefab: {fileID: 1000011132157130, guid: 137e6fb9c0cc3174a8ae803885f851b6,
     type: 2}
 --- !u!114 &1909934994
@@ -1584,8 +1584,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b964beb188ad6d40a87720e662db7f6, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   nrPlayers: 4
   gamestate: 0
   WINNING_SCORE: 3
@@ -1598,8 +1598,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6e6e541f91ba384bb490bcf1968adef, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   objectPrefabs:
   - {fileID: 1000010632170450, guid: 2672deee3d9938d4f95e31190e7e32c3, type: 2}
   - {fileID: 1000010454461494, guid: e40bb9a47ba8b7c4f9f0ff2e9566e3bb, type: 2}
