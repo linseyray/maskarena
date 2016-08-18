@@ -1023,48 +1023,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!1001 &850715073
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4000011935159180, guid: e40bb9a47ba8b7c4f9f0ff2e9566e3bb, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 1.9315252
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011935159180, guid: e40bb9a47ba8b7c4f9f0ff2e9566e3bb, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -0.5978538
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011935159180, guid: e40bb9a47ba8b7c4f9f0ff2e9566e3bb, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011935159180, guid: e40bb9a47ba8b7c4f9f0ff2e9566e3bb, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011935159180, guid: e40bb9a47ba8b7c4f9f0ff2e9566e3bb, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011935159180, guid: e40bb9a47ba8b7c4f9f0ff2e9566e3bb, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011935159180, guid: e40bb9a47ba8b7c4f9f0ff2e9566e3bb, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011935159180, guid: e40bb9a47ba8b7c4f9f0ff2e9566e3bb, type: 2}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: e40bb9a47ba8b7c4f9f0ff2e9566e3bb, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &870739243
 GameObject:
   m_ObjectHideFlags: 0
@@ -2030,7 +1988,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectPrefabs:
-  - {fileID: 1000011429955656, guid: 7a4f89e83b4b940c184aeb0612299c51, type: 2}
+  - {fileID: 1000011229714322, guid: 4cb3a100fa2674a4b88701f6dddd44a8, type: 2}
+  - {fileID: 1000011535617866, guid: e40bb9a47ba8b7c4f9f0ff2e9566e3bb, type: 2}
+  - {fileID: 1000011429955656, guid: 98a3eb0ad7fb27b49a799483accc23a0, type: 2}
   spawnInterval: 5
   intervalRandomRange: 0.7
 --- !u!1 &1966530559
