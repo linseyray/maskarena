@@ -316,10 +316,17 @@ InputManager:
     negativeButton: s
     positiveButton: w
     altNegativeButton: s
+<<<<<<< HEAD
     altPositiveButton: joystick button 1
     gravity: 0
     dead: 0
     sensitivity: 1
+=======
+    altPositiveButton: z
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+>>>>>>> origin/master
     snap: 0
     invert: 1
     type: 2
@@ -426,7 +433,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: 
+    positiveButton: o
     altNegativeButton: 
     altPositiveButton: joystick button 1
     gravity: 1000
