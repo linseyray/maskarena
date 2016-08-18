@@ -15,6 +15,8 @@ public class Player : MonoBehaviour {
 	private int nrLives; // Players
 
 	private Animator animator;
+	public SpriteRenderer bodyRenderer; //body
+	public SpriteRenderer maskRenderer; //body
 	private SpriteRenderer spriteRenderer;
 	private PlayerController playerController;
 	private Rigidbody2D rigidBody2D;
@@ -23,6 +25,17 @@ public class Player : MonoBehaviour {
 	public float fallingTime; // How long the player should fall before dying
 	private float timeTillDeath;
 
+	public GameObject maskGameobject;
+
+	public float defaultMaskTimeout = 5.0f;
+	private bool hasMask = false;
+	private float maskTimeLeft;
+	private Mask.TYPES maskType;
+
+	public int score {get;set;}
+
+	// temporary variables
+	public Sprite defaultMask;
 
 	void Awake() {
 		playerController = gameObject.GetComponent<PlayerController>();
@@ -34,7 +47,7 @@ public class Player : MonoBehaviour {
 	void Start () {
 		nrLives = startNrLives;
 	}
-	
+
 	void Update () {
 		if (isFalling) {
 			timeTillDeath -= Time.deltaTime;
@@ -53,6 +66,13 @@ public class Player : MonoBehaviour {
 				}
 			}
 		}
+
+		if(hasMask){
+			maskTimeLeft -= Time.deltaTime;
+			if(maskTimeLeft < 0) {
+				removeMask();
+			}
+		}
 	}
 
 	public void SetNumber(int number) {
@@ -60,7 +80,7 @@ public class Player : MonoBehaviour {
 		playerController.SetupMovementLabels(number);
 		spriteRenderer.color = colors[number-1];
 	}
-		
+
 	public void GoToState(PlayerState newState) {
 		animator.SetInteger("state", (int) newState);
 		currentState = newState;
@@ -85,5 +105,38 @@ public class Player : MonoBehaviour {
 
 	public bool IsFalling() {
 		return isFalling;
+	}
+
+	public void ReceiveMask(Mask.TYPES type){
+		this.maskType = type;
+		maskTimeLeft = defaultMaskTimeout;
+		// idea: if(type == Mask.TYPES.specialLongDurationMask) maskTimeLeft = 3*defaultMaskTimeout;
+
+		// TODO: add mask sprite to player object
+		maskRenderer.sprite = Sprite.Instantiate(defaultMask);
+		maskRenderer.enabled = true;
+		hasMask = true;
+	}
+
+	private void removeMask(){
+		hasMask = false;
+		if (maskGameobject) {
+			// for now make mask invisible
+			maskGameobject.GetComponent<SpriteRenderer>().enabled = false;
+		}
+		// TODO: remove mask sprite from player object
+	}
+
+	public void specialAction(){
+		if(hasMask) {
+			switch(maskType) {
+			default:
+				break;
+			}
+		}
+	}
+
+	public void increaseScore() {
+		this.score += 1;
 	}
 }
