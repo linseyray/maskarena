@@ -51,7 +51,6 @@ public class Player : MonoBehaviour {
 	void Update () {
 		if (isFalling) {
 			timeTillDeath -= Time.deltaTime;
-			Debug.Log(timeTillDeath);
 			if (timeTillDeath <= 0) {
 				nrLives--;
 				StopFalling();
@@ -138,5 +137,12 @@ public class Player : MonoBehaviour {
 
 	public void increaseScore() {
 		this.score += 1;
+	}
+
+	// Players takes a hit through dashes, boomerangs, projectiles....
+	//public void TakeHit(Vector2 impactDirection, float forceStrength) {
+	public void TakeHit() {
+		// Play animation
+		// Add force
 	}
 }
