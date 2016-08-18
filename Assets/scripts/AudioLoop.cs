@@ -7,10 +7,6 @@ public class AudioLoop : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
 		DontDestroyOnLoad(this);
-		for (int i = 0; i < transform.childCount; i++){
-			GameObject child = transform.GetChild(i).gameObject;
-			DontDestroyOnLoad(child);
-		}
 	}
 	void Start () {
 	

@@ -37,7 +37,6 @@ public class Player : MonoBehaviour {
 
 	void Awake() {
 		playerController = gameObject.GetComponent<PlayerController>();
-		bodyRenderer = gameObject.GetComponent<SpriteRenderer>();
 		animator = gameObject.GetComponentInChildren<Animator>();
 		rigidBody2D = gameObject.GetComponent<Rigidbody2D>();
 	}

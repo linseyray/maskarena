@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class Mask : MonoBehaviour{
-	public enum TYPES {CHICKEN, SATAN, BOMB};
+	public enum TYPES {CHICKEN = 0, SATAN = 1, BOMB = 2};
 
 	public TYPES type;
 	// type can be null atm
