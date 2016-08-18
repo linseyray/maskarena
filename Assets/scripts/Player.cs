@@ -14,6 +14,8 @@ public class Player : MonoBehaviour {
 	private Animator animator;
 	public SpriteRenderer bodyRenderer; //body
 	public SpriteRenderer maskRenderer; //body
+	private SpriteRenderer spriteRenderer;
+
 	public GameObject maskGameobject;
 	private PlayerMovement playerMovement;
 
@@ -77,6 +79,9 @@ void Awake() {
 		maskRenderer.sprite = Sprite.Instantiate(defaultMask);
 		maskRenderer.enabled = true;
 		// TODO: add mask sprite to player object
+		SpriteRenderer maskRenderer = maskGameobject.GetComponent<SpriteRenderer>();
+		maskRenderer.sprite = Sprite.Instantiate(defaultMask);
+		maskRenderer.enabled = true;
 		hasMask = true;
 	}
 
