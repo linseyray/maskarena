@@ -19,8 +19,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013851268766}
-  - 114: {fileID: 114000010525164786}
   - 61: {fileID: 61000011450472986}
+  - 114: {fileID: 114000010715587930}
   m_Layer: 0
   m_Name: HitCollider
   m_TagString: Untagged
@@ -176,7 +176,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 1000011132157130}
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 5
+  m_LinearDrag: 2.5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_IsKinematic: 0
@@ -249,7 +249,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114000010525164786
+--- !u!114 &114000010715587930
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -257,7 +257,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000010639610482}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a62a36f4851e5b541ad9d7dbd704d9f8, type: 3}
+  m_Script: {fileID: 11500000, guid: 345234b22f084da46ac26a61e96ef79b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rigidBody2D: {fileID: 50000010492334344}
@@ -285,10 +285,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bodyRenderer: {fileID: 212000013606345432}
   maskRenderer: {fileID: 212000011667258620}
-  speed: 25
-  dashSpeed: 10
+  speed: 20
+  dashSpeed: 7.5
   dashLength: 0.25
-  hitDetector: {fileID: 114000010525164786}
+  hitController: {fileID: 114000010715587930}
+  stopSpeed: 0.3
 --- !u!114 &114000012277101402
 MonoBehaviour:
   m_ObjectHideFlags: 1
