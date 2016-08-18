@@ -24,7 +24,7 @@ GameObject:
   - 82: {fileID: 82000011595429870}
   m_Layer: 0
   m_Name: HitCollider
-  m_TagString: Untagged
+  m_TagString: PlayerCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -563,7 +563,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -569498605
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1f462d5dc9d6f45d4b2c7d9b71f94eb6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 00ba96bf1120c4f46954e69463c581db, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
