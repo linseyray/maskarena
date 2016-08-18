@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour {
 	public float speed;
 	public float dashSpeed;
 	public float dashLength; // In seconds
+	private bool isDashing = false;
+	private float dashTimeLeft = 0;
+	public HitDetector hitDetector;
 
 	private string axisH;
 	private string axisV;
@@ -23,6 +26,7 @@ public class PlayerController : MonoBehaviour {
 		rigidBody2D = gameObject.GetComponent<Rigidbody2D>();
 		player = gameObject.GetComponent<Player>();
 		animator = player.gameObject.GetComponentInChildren<Animator>();
+		//hitDetector = gameObject.GetComponentInChildren<HitDetector>();
 	}
 
 	void Start() {
@@ -35,16 +39,16 @@ public class PlayerController : MonoBehaviour {
 	}
 	
 	void Update () {
-		if (!player.IsFalling())
+		if (!player.IsFalling() && !isDashing)
 			Move();
 			
-		if (Input.GetButtonDown(dashButton) && !player.IsFalling())
+		if (Input.GetButtonDown(dashButton) && !player.IsFalling() && !isDashing)
 			Dash();
 
-		if (Player.PlayerState.DASHING == player.GetCurrentState()) {
-			float dashTimeLeft = animator.GetFloat("dashTimeLeft") - Time.deltaTime;
-			//Debug.Log("dashing.." + dashTimeLeft + " " + Time.deltaTime);
-			animator.SetFloat("dashTimeLeft", dashTimeLeft);
+		if (isDashing) {
+			dashTimeLeft -= Time.deltaTime;
+			if (dashTimeLeft <= 0)
+				EndDash();
 		}
 	}
 
@@ -67,12 +71,27 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	private void Dash() {
+		// Add force
 		float moveHorizontal = Input.GetAxis(axisH);
 		float moveVertical = Input.GetAxis(axisV);
 		Vector2 inputDirection = new Vector2(moveHorizontal, moveVertical);
-		player.GoToState(Player.PlayerState.DASHING);
-		animator.SetFloat("dashTimeLeft", dashLength);
 		rigidBody2D.AddForce(inputDirection * dashSpeed, ForceMode2D.Impulse);
+
+		// Animate
+		animator.SetBool("isDashing", true);
+
+		// Set state-related stuff
+		player.GoToState(Player.PlayerState.DASHING);
+		dashTimeLeft = dashLength;
+		isDashing = true;
+		hitDetector.gameObject.SetActive(true);
+	}
+
+	private void EndDash() {
+		animator.SetBool("isDashing", false);
+		player.GoToState(Player.PlayerState.IDLE);
+		isDashing = false;
+		hitDetector.gameObject.SetActive(false);
 	}
 
 	private void FlipSprite() {
