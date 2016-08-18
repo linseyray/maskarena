@@ -22,8 +22,8 @@ GameObject:
   - 212: {fileID: 212000012639749582}
   - 50: {fileID: 50000010492334344}
   - 60: {fileID: 60000013759336024}
-  - 114: {fileID: 114000011436117276}
   - 114: {fileID: 114000012277101402}
+  - 114: {fileID: 114000012182716192}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -156,10 +156,10 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
-  m_WarningMessage: 
+  m_WarningMessage:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114000011436117276
+--- !u!114 &114000012182716192
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -167,9 +167,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000011132157130}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01dc3dc6210ebeb4bb6a52dedde1f7fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Script: {fileID: 11500000, guid: 4416a3679c5a73c4bad4f0b0f9726358, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
   bodyRenderer: {fileID: 212000013606345432}
   maskRenderer: {fileID: 212000011667258620}
   speed: 25
@@ -184,8 +184,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83295dd54768bbd4597940e584bca67a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   colors:
   - {r: 1, g: 0, b: 0, a: 1}
   - {r: 0, g: 0.83448267, b: 1, a: 1}
@@ -210,7 +210,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 0
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_SubsetIndices: 
+  m_SubsetIndices:
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
@@ -229,6 +229,8 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+  startNrLives: 3
+  fallingTime: 1
 --- !u!212 &212000012639749582
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -243,7 +245,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 0
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_SubsetIndices: 
+  m_SubsetIndices:
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
@@ -276,7 +278,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 0
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_SubsetIndices: 
+  m_SubsetIndices:
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
