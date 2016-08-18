@@ -1988,9 +1988,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectPrefabs:
-  - {fileID: 1000011229714322, guid: 4cb3a100fa2674a4b88701f6dddd44a8, type: 2}
-  - {fileID: 1000011535617866, guid: e40bb9a47ba8b7c4f9f0ff2e9566e3bb, type: 2}
-  - {fileID: 1000011429955656, guid: 98a3eb0ad7fb27b49a799483accc23a0, type: 2}
+  - {fileID: 1000012392582154, guid: 4cb3a100fa2674a4b88701f6dddd44a8, type: 2}
+  - {fileID: 1000013375778306, guid: e40bb9a47ba8b7c4f9f0ff2e9566e3bb, type: 2}
+  - {fileID: 1000014266493396, guid: 98a3eb0ad7fb27b49a799483accc23a0, type: 2}
   spawnInterval: 5
   intervalRandomRange: 0.7
 --- !u!1 &1966530559
