@@ -39,7 +39,7 @@ public class Player : MonoBehaviour {
 
 	void Awake() {
 		playerController = gameObject.GetComponent<PlayerController>();
-		spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+		bodyRenderer = gameObject.GetComponent<SpriteRenderer>();
 		animator = gameObject.GetComponentInChildren<Animator>();
 		rigidBody2D = gameObject.GetComponent<Rigidbody2D>();
 	}
@@ -77,7 +77,7 @@ public class Player : MonoBehaviour {
 
 	public void SetNumber(int number) {
 		this.number = number;
-		playerMovement.SetupMovementLabels(number);
+		playerController.SetupMovementLabels(number);
 		bodyRenderer.color = colors[number-1];
 	}
 
