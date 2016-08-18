@@ -5,9 +5,8 @@ using System.Collections.Generic;
 public class ObjectSpawner : MonoBehaviour {
 
 	public GameObject objectPrefab;
-	public List<Vector2> playerStartingPositions = new List<Vector2> ();
-	public Vector3 topLeft;
-	public Vector3 bottomRight;
+
+	private List<Vector2> playerStartingPositions;
 
 	void Start () {
 		initialiseFixedPlayersPositions();
@@ -16,13 +15,13 @@ public class ObjectSpawner : MonoBehaviour {
 	private void initialiseFixedPlayersPositions() {
 		playerStartingPositions = new List<Vector2> ();
 
-		topLeft = Camera.main.ScreenToWorldPoint(new Vector3(0,0,0));
-		bottomRight = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
+		Vector3 topLeft = Camera.main.ScreenToWorldPoint(new Vector3(0,0,0));
+		Vector3 bottomRight = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
 
-		Vector2 playerPos1 = new Vector2((bottomRight.x - topLeft.x)*0.25f, (bottomRight.y - topLeft.y)*0.25f);
-		Vector2 playerPos2 = new Vector2(-(bottomRight.x - topLeft.x)*0.25f, -(bottomRight.y - topLeft.y)*0.25f);
-		Vector2 playerPos3 = new Vector2((bottomRight.x - topLeft.x)*0.25f, -(bottomRight.y - topLeft.y)*0.25f);
-		Vector2 playerPos4 = new Vector2(-(bottomRight.x - topLeft.x)*0.25f, (bottomRight.y - topLeft.y)*0.25f);
+		Vector2 playerPos1 = new Vector2((bottomRight.x - topLeft.x)*0.2f, (bottomRight.y - topLeft.y)*0.22f);
+		Vector2 playerPos2 = new Vector2(-(bottomRight.x - topLeft.x)*0.2f, -(bottomRight.y - topLeft.y)*0.13f);
+		Vector2 playerPos3 = new Vector2((bottomRight.x - topLeft.x)*0.2f, -(bottomRight.y - topLeft.y)*0.13f);
+		Vector2 playerPos4 = new Vector2(-(bottomRight.x - topLeft.x)*0.2f, (bottomRight.y - topLeft.y)*0.22f);
 		playerStartingPositions.Add(playerPos1);
 		playerStartingPositions.Add(playerPos2);
 		playerStartingPositions.Add(playerPos3);
