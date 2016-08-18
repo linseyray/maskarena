@@ -23,6 +23,7 @@ public class Player : MonoBehaviour {
 	private bool isFalling = false;
 	public float fallingTime; // How long the player should fall before dying
 	private float timeTillDeath;
+	public float fallSpeed = 5;
 
 	public GameObject maskGameobject;
 
@@ -34,6 +35,11 @@ public class Player : MonoBehaviour {
 	public int score {get;set;}
 	public Sprite[] masks;
 	public Sprite emptymask;
+
+	public GameObject shadow;
+
+	public GameObject hitCollider;
+	public GameObject holeCollider;
 
 	void Awake() {
 		playerController = gameObject.GetComponent<PlayerController>();
@@ -85,17 +91,32 @@ public class Player : MonoBehaviour {
 		return currentState;
 	}
 
-	public void Fall() {
+	public void Fall(string tag) {
 		animator.SetBool("isFalling", true);
 		isFalling = true;
 		timeTillDeath = fallingTime;
-		rigidBody2D.gravityScale = 1;
+		rigidBody2D.gravityScale = fallSpeed;
+		shadow.SetActive(false);
+
+		// don't collide while falling
+		hitCollider.SetActive(false);
+		holeCollider.SetActive(false);
+
+		// make player fall behind platform
+		Debug.Log(tag);
+		if (tag == "TopTrigger")
+			bodyRenderer.sortingLayerName = "FallingObjects";
 	}
 
 	private void StopFalling() {
 		animator.SetBool("isFalling", false);
 		isFalling = false;
 		rigidBody2D.gravityScale = 0;
+		shadow.SetActive(true);
+		bodyRenderer.sortingLayerName = "Players";
+		ShakeCamera();
+		hitCollider.SetActive(true);
+		holeCollider.SetActive(true);
 	}
 
 	public bool IsFalling() {
@@ -138,7 +159,6 @@ public class Player : MonoBehaviour {
 		// Play animation
 		// Add force
 		rigidBody2D.AddForce(impactDirection * forceStrength, ForceMode2D.Impulse);
-		ShakeCamera();
 	}
 
 	private void ShakeCamera() {
