@@ -83,10 +83,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000010454461494}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ab789a15af1a458096104740b96deeb, type: 3}
+  m_Script: {fileID: 11500000, guid: 8678cd052156cfe41b55ca54f110eb00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 1
+  maskDisappearAnimationTime: 0
 --- !u!114 &114000013284513882
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -95,10 +95,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000010454461494}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea53a7bd089214c329dc5c23e6f38089, type: 3}
+  m_Script: {fileID: 11500000, guid: f2e34c6272ef97045b489406b8f41349, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maskDisappearAnimationTime: 0
+  type: 1
 --- !u!212 &212000011088382758
 SpriteRenderer:
   m_ObjectHideFlags: 1

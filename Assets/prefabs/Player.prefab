@@ -413,7 +413,6 @@ MonoBehaviour:
   rigidBody2D: {fileID: 50000010492334344}
   dashHitStrength: 25
   hitSound: {fileID: 8300000, guid: 65c36bb66c993704a8c7a97d3dcb0606, type: 3}
-  dashSound: {fileID: 8300000, guid: 148e50284b616be49b5cf9854bfbb91e, type: 3}
 --- !u!114 &114000010998279936
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -468,10 +467,10 @@ MonoBehaviour:
   defaultMaskTimeout: 5
   maskType: 0
   masks:
-  - {fileID: 21300000, guid: aeced232bca7741df960bd2e19b199d6, type: 3}
-  - {fileID: 21300000, guid: da7a691c1b3e143f5b15f41791ba42f8, type: 3}
-  - {fileID: 21300000, guid: 9db172dd8f1a64b65a5be73e3cd1a530, type: 3}
-  emptymask: {fileID: 21300000, guid: 1f462d5dc9d6f45d4b2c7d9b71f94eb6, type: 3}
+  - {fileID: 21300000, guid: 3db7d970ab05d8940a87e59f2932cf33, type: 3}
+  - {fileID: 21300000, guid: 205b0cc3fd259d94f88ab472a80ab711, type: 3}
+  - {fileID: 21300000, guid: e6f7b78de26fe2544bfbae455952923a, type: 3}
+  emptymask: {fileID: 21300000, guid: 00ba96bf1120c4f46954e69463c581db, type: 3}
 --- !u!212 &212000011667258620
 SpriteRenderer:
   m_ObjectHideFlags: 1
