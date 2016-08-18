@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Player : MonoBehaviour {
 
-	public enum PlayerState { IDLE = 0, RUNNING = 1 };
+	public enum PlayerState { IDLE = 0, RUNNING = 1, DASHING = 2 };
 	private PlayerState currentState = PlayerState.IDLE;
 
 	private string name;
@@ -19,7 +19,6 @@ public class Player : MonoBehaviour {
 		playerMovement = gameObject.GetComponent<PlayerMovement>();
 		spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 		animator = gameObject.GetComponentInChildren<Animator>();
-
 	}
 
 	void Start () {
@@ -33,10 +32,10 @@ public class Player : MonoBehaviour {
 		playerMovement.SetupMovementLabels(number);
 		spriteRenderer.color = colors[number-1];
 	}
-
-
+		
 	public void GoToState(PlayerState newState) {
 		animator.SetInteger("state", (int) newState);
+		currentState = newState;
 
 		/*
 		switch (newState) {

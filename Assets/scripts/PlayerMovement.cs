@@ -9,9 +9,11 @@ public class PlayerMovement : MonoBehaviour {
 	private Rigidbody2D rigidBody2D;
 	public SpriteRenderer bodyRenderer;
 	public SpriteRenderer maskRenderer;
+	private Animator animator;
 
 	public float speed;
 	public float dashSpeed;
+	public float dashLength; // In seconds
 
 	private string axisH;
 	private string axisV;
@@ -22,6 +24,7 @@ public class PlayerMovement : MonoBehaviour {
 	void Awake() {
 		rigidBody2D = gameObject.GetComponent<Rigidbody2D>();
 		player = gameObject.GetComponent<Player>();
+		animator = player.gameObject.GetComponentInChildren<Animator>();
 	}
 
 	void Start() {
@@ -35,19 +38,25 @@ public class PlayerMovement : MonoBehaviour {
 	
 	void Update () {
 		Move();
-
+			
 		if (Input.GetButtonDown(dashButton))
 			Dash();
+
+		Debug.Log(player.GetCurrentState());
+		if (Player.PlayerState.DASHING == player.GetCurrentState()) {
+			float dashTimeLeft = animator.GetFloat("dashTimeLeft") - Time.deltaTime;
+			//Debug.Log("dashing.." + dashTimeLeft + " " + Time.deltaTime);
+			animator.SetFloat("dashTimeLeft", dashTimeLeft);
+		}
 	}
 
 	private void Move() {
 		float moveHorizontal = Input.GetAxis(axisH);
 		float moveVertical = Input.GetAxis(axisV);
 		Vector2 inputDirection = new Vector2(moveHorizontal, moveVertical);
-
 		rigidBody2D.AddForce(inputDirection * speed);
 
-		// Flip if necessary
+		// Flip the sprite if necessary
 		if (!facingLeft && moveHorizontal < 0 || facingLeft && moveHorizontal > 0)
 			FlipSprite();
 
@@ -63,7 +72,8 @@ public class PlayerMovement : MonoBehaviour {
 		float moveHorizontal = Input.GetAxis(axisH);
 		float moveVertical = Input.GetAxis(axisV);
 		Vector2 inputDirection = new Vector2(moveHorizontal, moveVertical);
-
+		player.GoToState(Player.PlayerState.DASHING);
+		animator.SetFloat("dashTimeLeft", dashLength);
 		rigidBody2D.AddForce(inputDirection * dashSpeed, ForceMode2D.Impulse);
 	}
 
