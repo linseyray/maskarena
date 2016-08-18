@@ -32,9 +32,8 @@ public class Player : MonoBehaviour {
 	public Mask.TYPES maskType;
 
 	public int score {get;set;}
-
-	// temporary variables
-	public Sprite defaultMask;
+	public Sprite[] masks;
+	public Sprite emptymask;
 
 	void Awake() {
 		playerController = gameObject.GetComponent<PlayerController>();
@@ -110,7 +109,7 @@ public class Player : MonoBehaviour {
 		// idea: if(type == Mask.TYPES.specialLongDurationMask) maskTimeLeft = 3*defaultMaskTimeout;
 
 		// TODO: add mask sprite to player object
-		maskRenderer.sprite = Sprite.Instantiate(defaultMask);
+		maskRenderer.sprite = Sprite.Instantiate(masks[(int)type]);
 		maskRenderer.enabled = true;
 		hasMask = true;
 		UnmuteTrack ();
@@ -118,10 +117,8 @@ public class Player : MonoBehaviour {
 
 	private void removeMask(){
 		hasMask = false;
-		if (maskGameobject) {
-			// for now make mask invisible
-			maskGameobject.GetComponent<SpriteRenderer>().enabled = false;
-		}
+		// for now make mask invisible
+		maskRenderer.sprite = Sprite.Instantiate(emptymask);
 		// TODO: remove mask sprite from player object
 		MuteTrack();
 	}
