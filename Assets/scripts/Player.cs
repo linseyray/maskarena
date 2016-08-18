@@ -88,12 +88,16 @@ public class Player : MonoBehaviour {
 		return currentState;
 	}
 
-	public void Fall() {
+	public void Fall(string tag) {
 		animator.SetBool("isFalling", true);
 		isFalling = true;
 		timeTillDeath = fallingTime;
 		rigidBody2D.gravityScale = fallSpeed;
 		shadow.SetActive(false);
+
+		Debug.Log(tag);
+		if (tag == "TopTrigger")
+			bodyRenderer.sortingLayerName = "FallingObjects";
 	}
 
 	private void StopFalling() {
@@ -101,6 +105,7 @@ public class Player : MonoBehaviour {
 		isFalling = false;
 		rigidBody2D.gravityScale = 0;
 		shadow.SetActive(true);
+		bodyRenderer.sortingLayerName = "Players";
 	}
 
 	public bool IsFalling() {
