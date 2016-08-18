@@ -23,6 +23,7 @@ public class Player : MonoBehaviour {
 	private bool isFalling = false;
 	public float fallingTime; // How long the player should fall before dying
 	private float timeTillDeath;
+	public float fallSpeed = 5;
 
 	public GameObject maskGameobject;
 
@@ -34,6 +35,8 @@ public class Player : MonoBehaviour {
 	public int score {get;set;}
 	public Sprite[] masks;
 	public Sprite emptymask;
+
+	public GameObject shadow;
 
 	void Awake() {
 		playerController = gameObject.GetComponent<PlayerController>();
@@ -89,13 +92,15 @@ public class Player : MonoBehaviour {
 		animator.SetBool("isFalling", true);
 		isFalling = true;
 		timeTillDeath = fallingTime;
-		rigidBody2D.gravityScale = 1;
+		rigidBody2D.gravityScale = fallSpeed;
+		shadow.SetActive(false);
 	}
 
 	private void StopFalling() {
 		animator.SetBool("isFalling", false);
 		isFalling = false;
 		rigidBody2D.gravityScale = 0;
+		shadow.SetActive(true);
 	}
 
 	public bool IsFalling() {
