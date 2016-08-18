@@ -1026,10 +1026,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1192603494}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f63ea14b4b0df3b479845947a228c21c, type: 3}
+  m_Script: {fileID: 11500000, guid: 9cf6d838258554c658898df701b78447, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sources: []
+  sources:
+  - {fileID: 1827842187}
+  - {fileID: 786687070}
+  - {fileID: 553675133}
+  - {fileID: 1098113429}
+  - {fileID: 1581482517}
+  - {fileID: 877098340}
+  - {fileID: 164441031}
+  - {fileID: 39042961}
 --- !u!4 &1192603496
 Transform:
   m_ObjectHideFlags: 0
@@ -1331,7 +1339,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1587986151}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e05a1eecac684e46a662a628919321b, type: 3}
+  m_Script: {fileID: 11500000, guid: a010f2186d0744fdeb62387ded689335, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1693383534
@@ -1533,6 +1541,7 @@ GameObject:
   - 4: {fileID: 1909934992}
   - 114: {fileID: 1909934994}
   - 114: {fileID: 1909934993}
+  - 114: {fileID: 1909934995}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1580,3 +1589,20 @@ MonoBehaviour:
   nrPlayers: 4
   gamestate: 0
   WINNING_SCORE: 3
+--- !u!114 &1909934995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1909934991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71b03e4453c634f618230ea29ce872f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectPrefabs:
+  - {fileID: 1000010632170450, guid: f3730923e913843b4af9fa72eeb80bf3, type: 2}
+  - {fileID: 1000010947314512, guid: 5e88dc15b6015473b930e67264d0d809, type: 2}
+  - {fileID: 1000010454461494, guid: 2e23cdf5907b04632af9ca6cd828abd0, type: 2}
+  spawnInterval: 2
+  intervalRandomRange: 0.7

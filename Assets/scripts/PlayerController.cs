@@ -32,7 +32,6 @@ public class PlayerController : MonoBehaviour {
 		player = gameObject.GetComponent<Player>();
 		animator = player.gameObject.GetComponentInChildren<Animator>();
 		audioSource = gameObject.GetComponent<AudioSource>();
-		//hitDetector = gameObject.GetComponentInChildren<HitDetector>();
 	}
 
 	void Start() {

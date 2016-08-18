@@ -50,6 +50,9 @@ TagManager:
   - name: Players
     uniqueID: 923793847
     locked: 0
+  - name: Masks
+    uniqueID: 3725468691
+    locked: 0
   - name: Interface
     uniqueID: 549014139
     locked: 0

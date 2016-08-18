@@ -7,8 +7,7 @@ public class Player : MonoBehaviour {
 	public enum PlayerState { IDLE = 0, RUNNING = 1, DASHING = 2, FALLING = 3, DEAD };
 	private PlayerState currentState = PlayerState.IDLE;
 
-	private string name;
-	private int number;
+	private string playerName;
 	public List<Color> colors;
 
 	public int startNrLives;
@@ -33,12 +32,12 @@ public class Player : MonoBehaviour {
 	public Mask.TYPES maskType;
 
 	public int score {get;set;}
-
-	// temporary variables
-	public Sprite defaultMask;
+	public Sprite[] masks;
+	public Sprite emptymask;
 
 	void Awake() {
 		playerController = gameObject.GetComponent<PlayerController>();
+		bodyRenderer = gameObject.GetComponent<SpriteRenderer>();
 		animator = gameObject.GetComponentInChildren<Animator>();
 		rigidBody2D = gameObject.GetComponent<Rigidbody2D>();
 	}
@@ -74,7 +73,6 @@ public class Player : MonoBehaviour {
 	}
 
 	public void SetNumber(int number) {
-		this.number = number;
 		playerController.SetupMovementLabels(number);
 		bodyRenderer.color = colors[number-1];
 	}
@@ -111,17 +109,15 @@ public class Player : MonoBehaviour {
 		// idea: if(type == Mask.TYPES.specialLongDurationMask) maskTimeLeft = 3*defaultMaskTimeout;
 
 		// TODO: add mask sprite to player object
-		maskRenderer.sprite = Sprite.Instantiate(defaultMask);
+		maskRenderer.sprite = Sprite.Instantiate(masks[(int)type]);
 		maskRenderer.enabled = true;
 		hasMask = true;
 	}
 
 	private void removeMask(){
 		hasMask = false;
-		if (maskGameobject) {
-			// for now make mask invisible
-			maskGameobject.GetComponent<SpriteRenderer>().enabled = false;
-		}
+		// for now make mask invisible
+		maskRenderer.sprite = Sprite.Instantiate(emptymask);
 		// TODO: remove mask sprite from player object
 	}
 
@@ -139,10 +135,20 @@ public class Player : MonoBehaviour {
 	}
 
 	// Players takes a hit through dashes, boomerangs, projectiles....
-	public void TakeHit(Vector2 impactDirection, float forceStrength) {
+	//public void TakeHit(Vector2 impactDirection, float forceStrength) {
+	public void TakeHit() {
 		// Play animation
 		// Add force
-		rigidBody2D.AddForce(impactDirection * forceStrength, ForceMode2D.Impulse);
+		ShakeCamera();
 
+	}
+
+	void OnCollisionEnter2D(Collision2D collision) {
+		Debug.Log ("collision done");
+		TakeHit ();
+	}
+
+	private void ShakeCamera() {
+		Camera.main.GetComponent<CameraShake> ().StartShake (0.2f, 0.2f);
 	}
 }
