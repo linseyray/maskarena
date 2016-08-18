@@ -50,8 +50,8 @@ public class AudioLoop : MonoBehaviour {
 	private void ChangeStateOfRandomTrack(bool mute) {
 		while (true) {
 			int rand = Random.Range (0, sources.Length - 1);
-			if (sources [i].mute != mute) {
-				sources [i].mute = mute;
+			if (sources [rand].mute != mute) {
+				sources [rand].mute = mute;
 				return;
 			}
 		}
