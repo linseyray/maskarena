@@ -103,34 +103,5 @@ public class Player : MonoBehaviour {
 		
 	}
 
-	public void ReceiveMask(Mask.TYPES type){
-		this.maskType = type;
-		maskTimeLeft = defaultMaskTimeout;
-		// idea: if(type == Mask.TYPES.specialLongDurationMask) maskTimeLeft = 3*defaultMaskTimeout;
 
-		// TODO: add mask sprite to player object
-		SpriteRenderer maskRenderer = maskGameobject.GetComponent<SpriteRenderer>();
-		maskRenderer.sprite = Sprite.Instantiate(defaultMask);
-		maskRenderer.enabled = true;
-		hasMask = true;
-	}
-
-	private void removeMask(){
-		hasMask = false;
-		if (maskGameobject) {
-			// for now make mask invisible 
-			maskGameobject.GetComponent<SpriteRenderer>().enabled = false;
-		}
-		// TODO: remove mask sprite from player object
-	}
-
-	public void specialAction(){
-		if(hasMask) {
-			switch(maskType) {
-			default:
-				break;
-			}
-		}
-		
-	}
 }
