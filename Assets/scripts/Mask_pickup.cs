@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class Mask_pickup : MonoBehaviour {
-	public float maskDisappearAnimationTime = 1.0f;
+	public float maskDisappearAnimationTime = 0;
 	// Use this for initialization
 	void Start () {
 	
