@@ -38,6 +38,9 @@ public class Player : MonoBehaviour {
 
 	public GameObject shadow;
 
+	public GameObject hitCollider;
+	public GameObject holeCollider;
+
 	void Awake() {
 		playerController = gameObject.GetComponent<PlayerController>();
 		animator = gameObject.GetComponentInChildren<Animator>();
@@ -95,6 +98,11 @@ public class Player : MonoBehaviour {
 		rigidBody2D.gravityScale = fallSpeed;
 		shadow.SetActive(false);
 
+		// don't collide while falling
+		hitCollider.SetActive(false);
+		holeCollider.SetActive(false);
+
+		// make player fall behind platform
 		Debug.Log(tag);
 		if (tag == "TopTrigger")
 			bodyRenderer.sortingLayerName = "FallingObjects";
@@ -106,6 +114,9 @@ public class Player : MonoBehaviour {
 		rigidBody2D.gravityScale = 0;
 		shadow.SetActive(true);
 		bodyRenderer.sortingLayerName = "Players";
+		ShakeCamera();
+		hitCollider.SetActive(true);
+		holeCollider.SetActive(true);
 	}
 
 	public bool IsFalling() {
@@ -148,7 +159,6 @@ public class Player : MonoBehaviour {
 		// Play animation
 		// Add force
 		rigidBody2D.AddForce(impactDirection * forceStrength, ForceMode2D.Impulse);
-		ShakeCamera();
 	}
 
 	private void ShakeCamera() {

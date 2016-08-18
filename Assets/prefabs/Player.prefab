@@ -492,7 +492,7 @@ MonoBehaviour:
   startNrLives: 5
   bodyRenderer: {fileID: 212000013606345432}
   maskRenderer: {fileID: 212000011667258620}
-  fallingTime: 1
+  fallingTime: 0.5
   fallSpeed: 5
   maskGameobject: {fileID: 0}
   defaultMaskTimeout: 5
@@ -503,6 +503,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e6f7b78de26fe2544bfbae455952923a, type: 3}
   emptymask: {fileID: 21300000, guid: 00ba96bf1120c4f46954e69463c581db, type: 3}
   shadow: {fileID: 1000012077861838}
+  hitCollider: {fileID: 1000010639610482}
+  holeCollider: {fileID: 1000012623491386}
 --- !u!212 &212000010792669554
 SpriteRenderer:
   m_ObjectHideFlags: 1
