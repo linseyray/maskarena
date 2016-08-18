@@ -104,8 +104,10 @@ public class Player : MonoBehaviour {
 
 		// make player fall behind platform
 		Debug.Log(tag);
-		if (tag == "TopTrigger")
+		if (tag == "TopTrigger") {
 			bodyRenderer.sortingLayerName = "FallingObjects";
+			maskRenderer.sortingLayerName = "FallingObjects";
+		}
 	}
 
 	private void StopFalling() {
@@ -132,6 +134,7 @@ public class Player : MonoBehaviour {
 		maskRenderer.sprite = Sprite.Instantiate(masks[(int)type]);
 		maskRenderer.enabled = true;
 		hasMask = true;
+		UnmuteTrack ();
 	}
 
 	private void removeMask(){
@@ -139,6 +142,7 @@ public class Player : MonoBehaviour {
 		// for now make mask invisible
 		maskRenderer.sprite = Sprite.Instantiate(emptymask);
 		// TODO: remove mask sprite from player object
+		MuteTrack();
 	}
 
 	public void specialAction(){
@@ -163,5 +167,19 @@ public class Player : MonoBehaviour {
 
 	private void ShakeCamera() {
 		Camera.main.GetComponent<CameraShake> ().StartShake (0.2f, 0.2f);
+	}
+
+	private void UnmuteTrack() {
+		AudioLoop loop = (AudioLoop)GetComponent ("AudioLoop");
+		if (loop != null) {
+			loop.UnmuteRandomTrack ();
+		}
+	}
+
+	private void MuteTrack() {
+		AudioLoop loop = (AudioLoop)GetComponent("AudioLoop");
+		if (loop != null) {
+			loop.MuteRandomTrack ();
+		}
 	}
 }
