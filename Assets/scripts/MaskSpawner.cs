@@ -7,6 +7,9 @@ public class MaskSpawner : MonoBehaviour {
 	public GameObject[] objectPrefabs;
 	public float spawnInterval;
 	public float intervalRandomRange;
+	public float stageWidth;
+	public float stageHeight;
+
 	float spawnTime;
 	float timepassed;
 
@@ -16,24 +19,25 @@ public class MaskSpawner : MonoBehaviour {
 		
 	void Update () {
 		if(timepassed > spawnTime) {
-			SpawnObjectRandom();
+			SpawnObjectRandomInEllipse();
 			timepassed = 0;
 			spawnTime = Random.Range(spawnInterval-intervalRandomRange, spawnInterval+intervalRandomRange);
 		}
 		timepassed += Time.deltaTime;
 	}
 
-	public GameObject SpawnObjectRandom() {
+	public GameObject SpawnObjectRandomInEllipse() {
 		int randomIndex = (int) Random.Range(0, objectPrefabs.Length);
 		GameObject objectPrefab = objectPrefabs[randomIndex];
-		GameObject gameObject = (GameObject) Instantiate(objectPrefab, NewRandomPosition(), Quaternion.identity);
+		GameObject gameObject = (GameObject) Instantiate(objectPrefab, SpawnInEllipse(), Quaternion.identity);
 		gameObject.transform.SetParent(this.transform);
 		return gameObject;
 	}
 
-	private Vector2 NewRandomPosition() {
-		Vector3 topLeft = Camera.main.ScreenToWorldPoint(new Vector3(0,0,0));
-		Vector3 bottomRight = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
-		return new Vector2(Random.Range(topLeft.x, bottomRight.x), Random.Range(topLeft.y, bottomRight.y));
+	private Vector2 SpawnInEllipse() {
+		Vector2 unitCircle = Random.insideUnitCircle;
+		float x = (float)unitCircle.x * stageWidth / 2.0f;
+		float y = (float)unitCircle.y * stageHeight / 2.0f;
+		return new Vector2 (x, y);
 	}
 }
