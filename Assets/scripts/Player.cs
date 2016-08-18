@@ -36,7 +36,6 @@ void Awake() {
 	}
 
 	void Update () {
-
 		if(hasMask){
 			maskTimeLeft -= Time.deltaTime;
 			if(maskTimeLeft < 0) {
@@ -77,6 +76,7 @@ void Awake() {
 		// TODO: add mask sprite to player object
 		maskRenderer.sprite = Sprite.Instantiate(defaultMask);
 		maskRenderer.enabled = true;
+		// TODO: add mask sprite to player object
 		hasMask = true;
 	}
 
@@ -96,7 +96,6 @@ void Awake() {
 				break;
 			}
 		}
-
 	}
 
 	public void increaseScore() {
