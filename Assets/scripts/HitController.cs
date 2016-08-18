@@ -10,7 +10,16 @@ public class HitController : MonoBehaviour {
 	public enum HitType { NONE, DASH };
 	private HitType currentHitType;
 
+	private AudioSource audioSource;
+
 	public float dashHitStrength = 25;
+
+	// Audio
+	public AudioClip hitSound;
+
+	void Awake() {
+		audioSource = gameObject.GetComponent<AudioSource>();
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -23,12 +32,29 @@ public class HitController : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D other) {
 		if (other.gameObject.tag == "Player") {
+			if (currentHitType == HitType.NONE)
+				// No special hit, physics will just push
+				return;
+
+			// Hit them!!!!
 			Vector2 impactDirection = rigidBody2D.velocity; // the direction we're moving in
 			impactDirection.Normalize(); // We only want the direction
 			float forceStrength = dashHitStrength; // TODO make dependent on mask type
 
 			// Hit the other player
 			other.gameObject.GetComponent<Player>().TakeHit(impactDirection, forceStrength);
+			PlayHitSound();
 		}
+	}
+
+	private void PlayHitSound() {
+		if (currentHitType == HitType.DASH) {
+			audioSource.PlayOneShot(hitSound);
+		}
+	}
+
+	// Set this when in dash, using a mask,...
+	public void SetHitType(HitType newHitType) {
+		currentHitType = newHitType;
 	}
 }

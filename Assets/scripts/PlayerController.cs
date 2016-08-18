@@ -24,10 +24,14 @@ public class PlayerController : MonoBehaviour {
 
 	private bool facingLeft = false;
 
+	private AudioSource audioSource;
+	public AudioClip dashSound;
+
 	void Awake() {
 		rigidBody2D = gameObject.GetComponent<Rigidbody2D>();
 		player = gameObject.GetComponent<Player>();
 		animator = player.gameObject.GetComponentInChildren<Animator>();
+		audioSource = gameObject.GetComponent<AudioSource>();
 		//hitDetector = gameObject.GetComponentInChildren<HitDetector>();
 	}
 
@@ -85,6 +89,9 @@ public class PlayerController : MonoBehaviour {
 		Vector2 inputDirection = new Vector2(moveHorizontal, moveVertical);
 		rigidBody2D.AddForce(inputDirection * dashSpeed, ForceMode2D.Impulse);
 
+		// Sound
+		audioSource.PlayOneShot(dashSound);
+
 		// Animate
 		animator.SetBool("isDashing", true);
 
@@ -93,6 +100,7 @@ public class PlayerController : MonoBehaviour {
 		dashTimeLeft = dashLength;
 		isDashing = true;
 		hitController.gameObject.SetActive(true);
+		hitController.SetHitType(HitController.HitType.DASH);
 	}
 
 	private void EndDash() {
@@ -100,6 +108,7 @@ public class PlayerController : MonoBehaviour {
 		player.GoToState(Player.PlayerState.IDLE);
 		isDashing = false;
 		hitController.gameObject.SetActive(false);
+		hitController.SetHitType(HitController.HitType.NONE);
 	}
 
 	private void FlipSprite() {

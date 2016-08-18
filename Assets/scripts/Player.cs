@@ -143,5 +143,6 @@ public class Player : MonoBehaviour {
 		// Play animation
 		// Add force
 		rigidBody2D.AddForce(impactDirection * forceStrength, ForceMode2D.Impulse);
+
 	}
 }
