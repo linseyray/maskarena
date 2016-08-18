@@ -13,7 +13,7 @@ public class CameraShake : MonoBehaviour {
 		originalPos = transform.localPosition;
 	}
 
-	public void startShake(float shakeTime, float shakeAmount) {
+	public void StartShake(float shakeTime, float shakeAmount) {
 		this.shakeTime = shakeTime;
 		this.shakeAmount = shakeAmount;
 	}

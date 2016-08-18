@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour {
 		rigidBody2D = gameObject.GetComponent<Rigidbody2D>();
 		player = gameObject.GetComponent<Player>();
 		animator = player.gameObject.GetComponentInChildren<Animator>();
-		//hitDetector = gameObject.GetComponentInChildren<HitDetector>();
+		hitDetector = gameObject.GetComponentInChildren<HitDetector>();
 	}
 
 	void Start() {

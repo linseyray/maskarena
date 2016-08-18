@@ -7,8 +7,7 @@ public class Player : MonoBehaviour {
 	public enum PlayerState { IDLE = 0, RUNNING = 1, DASHING = 2, FALLING = 3, DEAD };
 	private PlayerState currentState = PlayerState.IDLE;
 
-	private string name;
-	private int number;
+	private string playerName;
 	public List<Color> colors;
 
 	public int startNrLives;
@@ -75,7 +74,6 @@ public class Player : MonoBehaviour {
 	}
 
 	public void SetNumber(int number) {
-		this.number = number;
 		playerController.SetupMovementLabels(number);
 		bodyRenderer.color = colors[number-1];
 	}
@@ -144,5 +142,16 @@ public class Player : MonoBehaviour {
 	public void TakeHit() {
 		// Play animation
 		// Add force
+		ShakeCamera();
+
+	}
+
+	void OnCollisionEnter2D(Collision2D collision) {
+		Debug.Log ("collision done");
+		TakeHit ();
+	}
+
+	private void ShakeCamera() {
+		Camera.main.GetComponent<CameraShake> ().StartShake (0.2f, 0.2f);
 	}
 }
