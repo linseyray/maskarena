@@ -40,18 +40,18 @@ public class AudioLoop : MonoBehaviour {
 	}
 
 	public void UnmuteRandomTrack() {
-		for (int i = 0; i < sources.Length; i++) {
-			if (sources [i].mute) {
-				sources [i].mute = false;
-				return;
-			}
-		}
+		ChangeStateOfRandomTrack (false);
 	}
 
 	public void MuteRandomTrack() {
-		for (int i = 0; i < sources.Length; i++) {
-			if (!sources [i].mute) {
-				sources [i].mute = true;
+		ChangeStateOfRandomTrack (true);
+	}
+
+	private void ChangeStateOfRandomTrack(bool mute) {
+		while (true) {
+			int rand = Random.Range (0, sources.Length - 1);
+			if (sources [i].mute != mute) {
+				sources [i].mute = mute;
 				return;
 			}
 		}
