@@ -60,7 +60,7 @@ public class Player : MonoBehaviour {
 			timeTillDeath -= Time.deltaTime;
 			if (timeTillDeath <= 0) {
 				nrLives--;
-				livesController.TakeLife(playerNumber);
+				livesController.SetLives(playerNumber, nrLives);
 				StopFalling();
 				if (nrLives > 0) {
 					// Respawn

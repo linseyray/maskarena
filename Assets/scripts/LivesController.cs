@@ -4,10 +4,9 @@ using System.Collections.Generic;
 
 public class LivesController : MonoBehaviour {
 
-	private bool initialised = false;
+	public bool initialised = false;
 
 	public int maxNrLives;
-	private int nrLives;
 	public GameObject fullHeartPrefab;
 	public GameObject emptyHeartPrefab;
 
@@ -36,7 +35,6 @@ public class LivesController : MonoBehaviour {
 		if (!initialised) {
 			// Instantiate the hearts
 			for (int i = 0; i < 4; i++) {
-				Debug.Log("lives in loop " + maxNrLives);
 				for (int j = 0; j < this.maxNrLives; j++) {
 					Vector2 position = positions[i].position;
 					position.x += heartOffset * j;
@@ -44,22 +42,37 @@ public class LivesController : MonoBehaviour {
 					GameObject emptyHeart = GameObject.Instantiate(emptyHeartPrefab);
 					fullHeart.transform.position = position;
 					emptyHeart.transform.position = position;
-					Debug.Log(fullHearts);
 					fullHearts[i].Add(fullHeart);
 					emptyHearts[i].Add(emptyHeart);
 				}
 			}
+			Debug.Log("Initialised");
 			initialised = true;
 		}
 	}
 
-	public void TakeLife(int playerNumber) {
-		nrLives--;
+	public void SetLives(int playerNumber, int nrLives) {
+		if (!initialised) {
+			Debug.Log("returning");
+			return;
+		}
+		
+		Debug.Log("nrLives " + nrLives);
+		for (int i = 0; i < fullHearts.Length; i++) {
+			if (i+1 <= nrLives) {
+				fullHearts[playerNumber-1][i].SetActive(true);
+				emptyHearts[playerNumber-1][i].SetActive(false);
+			}
+			else 
+			if (i+1 <= maxNrLives) {
+				fullHearts[playerNumber-1][i].SetActive(false);
+				emptyHearts[playerNumber-1][i].SetActive(true);
+			}
+		}
 	}
 
 	// Set from Player.cs
 	public void SetNrLives(int lives) {
 		this.maxNrLives = lives;
-		Debug.Log("Max lives " + this.maxNrLives);
 	}
 }
