@@ -45,6 +45,7 @@ public class Player : MonoBehaviour {
 	private float specialAbilityCooldown = 0;
 	private bool specialAbilityReady = true;
 	public GameObject bulletPrefab;
+	public GameObject bombPrefab;
 	private LivesController livesController;
 
 	void Awake() {
@@ -186,6 +187,11 @@ public class Player : MonoBehaviour {
 					spawnFireRain();
 					break;
 				}
+			case Mask.TYPES.BOMB:
+				{
+					layBomb();
+					break;
+				}
 			default:
 				break;
 			}
@@ -227,5 +233,9 @@ public class Player : MonoBehaviour {
 				}
 			}
 		}
+	}
+	private void layBomb() {
+		GameObject bomb = GameObject.Instantiate(bombPrefab);
+		bomb.transform.position = transform.position;
 	}
 }
