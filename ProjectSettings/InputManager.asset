@@ -297,7 +297,7 @@ InputManager:
     m_Name: P2_Horizontal
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: q
+    negativeButton: 
     positiveButton: d
     altNegativeButton: a
     altPositiveButton: 
@@ -458,7 +458,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: 
+    positiveButton: mouse 0
     altNegativeButton: 
     altPositiveButton: joystick button 1
     gravity: 1000
@@ -474,7 +474,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: e
+    positiveButton: space
     altNegativeButton: 
     altPositiveButton: joystick button 1
     gravity: 1000
@@ -506,7 +506,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: 
+    positiveButton: g
     altNegativeButton: 
     altPositiveButton: joystick button 1
     gravity: 1000
