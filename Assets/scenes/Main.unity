@@ -1508,6 +1508,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nrPlayers: 4
+  maxNrLives: 5
+  livesController: {fileID: 0}
   gamestate: 0
   WINNING_SCORE: 3
 --- !u!114 &1909934995

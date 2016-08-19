@@ -5,9 +5,13 @@ using System.Collections.Generic;
 public class GameManager : MonoBehaviour {
 
 	public int nrPlayers;
+	public int maxNrLives;
 
 	private List<GameObject> players;
+
 	private ObjectSpawner objectSpawner;
+	private LivesController livesController;
+
 	public Gamestates gamestate;
 	public int WINNING_SCORE = 3;
 
@@ -20,11 +24,13 @@ public class GameManager : MonoBehaviour {
 
 	void Awake() {
 		objectSpawner = (ObjectSpawner) gameObject.GetComponent<ObjectSpawner>();
+		livesController = gameObject.GetComponentInChildren<LivesController>();
 	}
 
 	void Start () {
 		players = new List<GameObject>();
 		SpawnPlayers();
+		livesController.SetMaxNrLives(maxNrLives); // Spawns the UI elements
 	}
 
 	void Update () {
@@ -71,6 +77,7 @@ public class GameManager : MonoBehaviour {
 		for (int i = 0; i < nrPlayers; i++) {
 			GameObject player = objectSpawner.SpawnObjectFixed (i);
 			player.GetComponent<Player>().SetNumber(i+1);
+			player.GetComponent<Player>().SetMaxNrLives(maxNrLives);
 			players.Add(player);
 		}
 	}
