@@ -117,6 +117,10 @@ public class Player : MonoBehaviour {
 		hitCollider.SetActive(false);
 		holeCollider.SetActive(false);
 
+		// Don't respawn with mask
+		if (hasMask)
+			removeMask();
+
 		// make player fall behind platform
 		Debug.Log(tag);
 		if (tag == "TopTrigger") {
