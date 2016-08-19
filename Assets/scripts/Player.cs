@@ -45,6 +45,7 @@ public class Player : MonoBehaviour {
 	private float specialAbilityCooldown = 0;
 	private bool specialAbilityReady = true;
 	public GameObject bulletPrefab;
+	public GameObject bombPrefab;
 	private LivesController livesController;
 
 	void Awake() {
@@ -160,7 +161,6 @@ public class Player : MonoBehaviour {
 		maskTimeLeft = defaultMaskTimeout;
 		// idea: if(type == Mask.TYPES.specialLongDurationMask) maskTimeLeft = 3*defaultMaskTimeout;
 
-		// TODO: add mask sprite to player object
 		maskRenderer.sprite = Sprite.Instantiate(masks[(int)type]);
 		maskRenderer.enabled = true;
 		hasMask = true;
@@ -173,7 +173,6 @@ public class Player : MonoBehaviour {
 		hasMask = false;
 		// for now make mask invisible
 		maskRenderer.sprite = Sprite.Instantiate(emptymask);
-		// TODO: remove mask sprite from player object
 		specialAbilityReady = false;
 		MuteTrack();
 	}
@@ -184,6 +183,11 @@ public class Player : MonoBehaviour {
 			case Mask.TYPES.SATAN:
 				{
 					spawnFireRain();
+					break;
+				}
+			case Mask.TYPES.BOMB:
+				{
+					layBomb();
 					break;
 				}
 			default:
@@ -227,5 +231,9 @@ public class Player : MonoBehaviour {
 				}
 			}
 		}
+	}
+	private void layBomb() {
+		GameObject bomb = GameObject.Instantiate(bombPrefab);
+		bomb.transform.position = transform.position;
 	}
 }
