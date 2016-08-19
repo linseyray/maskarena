@@ -9,21 +9,21 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1000011429955656}
+  m_RootGameObject: {fileID: 1000014266493396}
   m_IsPrefabParent: 1
---- !u!1 &1000011429955656
+--- !u!1 &1000014266493396
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 4000010400842876}
-  - 212: {fileID: 212000010009175338}
-  - 95: {fileID: 95000012215353310}
-  - 114: {fileID: 114000011112902714}
-  - 114: {fileID: 114000012790637552}
-  - 61: {fileID: 61000012741151734}
+  - 4: {fileID: 4000013793584366}
+  - 212: {fileID: 212000014168978336}
+  - 95: {fileID: 95000012676444790}
+  - 114: {fileID: 114000010814309724}
+  - 114: {fileID: 114000010673904618}
+  - 61: {fileID: 61000014254863696}
   m_Layer: 0
   m_Name: mask_bomber_x18_0
   m_TagString: Untagged
@@ -31,25 +31,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4000010400842876
+--- !u!4 &4000013793584366
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011429955656}
+  m_GameObject: {fileID: 1000014266493396}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.34464085, y: -0.5565463, z: 0}
+  m_LocalPosition: {x: 4.0438423, y: -0.4847881, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!61 &61000012741151734
+--- !u!61 &61000014254863696
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011429955656}
+  m_GameObject: {fileID: 1000014266493396}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -58,16 +58,16 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 0.18, y: 0.31}
---- !u!95 &95000012215353310
+--- !u!95 &95000012676444790
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011429955656}
+  m_GameObject: {fileID: 1000014266493396}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7f6933ae696054d6a8543fa08d8fb201, type: 2}
+  m_Controller: {fileID: 9100000, guid: a919306c08bc9412db3703d521d5dbfe, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -75,36 +75,36 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114000011112902714
+--- !u!114 &114000010673904618
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011429955656}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2e34c6272ef97045b489406b8f41349, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 2
---- !u!114 &114000012790637552
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011429955656}
+  m_GameObject: {fileID: 1000014266493396}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8678cd052156cfe41b55ca54f110eb00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maskDisappearAnimationTime: 0
---- !u!212 &212000010009175338
+--- !u!114 &114000010814309724
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014266493396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2e34c6272ef97045b489406b8f41349, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 2
+--- !u!212 &212000014168978336
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011429955656}
+  m_GameObject: {fileID: 1000014266493396}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
