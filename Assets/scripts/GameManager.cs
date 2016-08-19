@@ -84,6 +84,8 @@ public class GameManager : MonoBehaviour {
 				gamestate = Gamestates.IDLE;
 				break;
 			}
+		default:
+			break;
 		}
 
 	}
@@ -116,7 +118,6 @@ public class GameManager : MonoBehaviour {
 		gamestate = Gamestates.ROUND;
 		SpawnUI();
 		SpawnPlayers();
-
 	}
 	private void StartLobby() {
 		gamestate = Gamestates.LOBBY;
