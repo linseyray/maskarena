@@ -8,6 +8,7 @@ public class Player : MonoBehaviour {
 	private PlayerState currentState = PlayerState.IDLE;
 
 	private string playerName;
+	private int playerNumber;
 	public List<Color> colors;
 
 	public int startNrLives;
@@ -41,6 +42,12 @@ public class Player : MonoBehaviour {
 	public GameObject hitCollider;
 	public GameObject holeCollider;
 
+	public float sa_cooldownDuration = 2f;
+	private float specialAbilityCooldown = 0;
+	private bool specialAbilityReady = true;
+	public GameObject bulletPrefab;
+	public LivesController livesController;
+
 	void Awake() {
 		playerController = gameObject.GetComponent<PlayerController>();
 		animator = gameObject.GetComponentInChildren<Animator>();
@@ -49,6 +56,7 @@ public class Player : MonoBehaviour {
 
 	void Start () {
 		nrLives = startNrLives;
+		livesController.SetNrLives(nrLives); // Spawns the UI elements
 	}
 
 	void Update () {
@@ -56,6 +64,7 @@ public class Player : MonoBehaviour {
 			timeTillDeath -= Time.deltaTime;
 			if (timeTillDeath <= 0) {
 				nrLives--;
+				livesController.SetLives(playerNumber, nrLives);
 				StopFalling();
 				if (nrLives > 0) {
 					// Respawn
@@ -75,9 +84,15 @@ public class Player : MonoBehaviour {
 				removeMask();
 			}
 		}
+		if(specialAbilityCooldown<0) {
+			specialAbilityReady = true;
+		} else {
+			specialAbilityCooldown -= Time.deltaTime;
+		}
 	}
 
 	public void SetNumber(int number) {
+		playerNumber = number;
 		playerController.SetupMovementLabels(number);
 		bodyRenderer.color = colors[number-1];
 	}
@@ -116,6 +131,7 @@ public class Player : MonoBehaviour {
 		rigidBody2D.gravityScale = 0;
 		shadow.SetActive(true);
 		bodyRenderer.sortingLayerName = "Players";
+		maskRenderer.sortingLayerName = "Masks";
 		ShakeCamera();
 		hitCollider.SetActive(true);
 		holeCollider.SetActive(true);
@@ -134,6 +150,8 @@ public class Player : MonoBehaviour {
 		maskRenderer.sprite = Sprite.Instantiate(masks[(int)type]);
 		maskRenderer.enabled = true;
 		hasMask = true;
+		specialAbilityReady = true;
+		specialAbilityCooldown = sa_cooldownDuration;
 		UnmuteTrack ();
 	}
 
@@ -142,15 +160,23 @@ public class Player : MonoBehaviour {
 		// for now make mask invisible
 		maskRenderer.sprite = Sprite.Instantiate(emptymask);
 		// TODO: remove mask sprite from player object
+		specialAbilityReady = false;
 		MuteTrack();
 	}
 
 	public void specialAction(){
-		if(hasMask) {
+		if(hasMask && specialAbilityReady) {
 			switch(maskType) {
+			case Mask.TYPES.SATAN:
+				{
+					spawnFireRain();
+					break;
+				}
 			default:
 				break;
 			}
+			specialAbilityReady = false;
+			specialAbilityCooldown = sa_cooldownDuration;
 		}
 	}
 
@@ -179,5 +205,17 @@ public class Player : MonoBehaviour {
 		GameObject manager = GameObject.Find ("AudioManager");
 		AudioLoop loop = manager.GetComponent<AudioLoop> ();
 		loop.MuteRandomTrack ();
+	}
+
+	private void spawnFireRain(){
+		for(int i = -1;i<2;i++) {
+			for(int j = -1;j<2;j++) {
+				if(!(i==0&&j==0)){
+					GameObject bullet = GameObject.Instantiate(bulletPrefab);
+					bullet.transform.parent = transform;
+					bullet.transform.localPosition = new Vector2(i,j);
+				}
+			}
+		}
 	}
 }

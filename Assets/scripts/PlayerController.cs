@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour {
 	private string axisH;
 	private string axisV;
 	private string dashButton;
+	private string specialButton;
 
 	private bool facingLeft = false;
 
@@ -41,6 +42,7 @@ public class PlayerController : MonoBehaviour {
 		axisH = "P" + playerNumber + "_Horizontal";
 		axisV = "P" + playerNumber + "_Vertical";
 		dashButton = "P" + playerNumber + "_Dash";
+		specialButton = "P" + playerNumber + "_SpecialAction";
 	}
 	
 	void Update () {
@@ -50,6 +52,9 @@ public class PlayerController : MonoBehaviour {
 		if (Input.GetButtonDown(dashButton) && !player.IsFalling() && !isDashing)
 			Dash();
 
+		if (Input.GetButtonDown(specialButton) && !player.IsFalling() && !isDashing)
+			player.specialAction();
+		
 		if (isDashing) {
 			dashTimeLeft -= Time.deltaTime;
 			if (dashTimeLeft <= 0)
@@ -113,6 +118,6 @@ public class PlayerController : MonoBehaviour {
 	private void FlipSprite() {
 		facingLeft	= !facingLeft;
 		bodyRenderer.flipX = facingLeft;
-		//maskRenderer.flipX = facingRight;
+		maskRenderer.flipX = facingLeft;
 	}
 }
