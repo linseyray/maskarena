@@ -21,6 +21,7 @@ GameObject:
   - 4: {fileID: 4000012759870610}
   - 212: {fileID: 212000010154839634}
   - 95: {fileID: 95000010821398270}
+  - 114: {fileID: 114000011958453062}
   m_Layer: 0
   m_Name: bullet_satan
   m_TagString: Untagged
@@ -58,6 +59,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114000011958453062
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013117017776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c6f9d207181d42f580224a26e86de07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSpeed: 15
 --- !u!212 &212000010154839634
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -8,15 +8,19 @@ public class Bullet : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		direction = transform.position - transform.parent.position;
-		direction.Normalize();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		Vector3 offset = new Vector3(
+			direction.x*bulletSpeed*Time.deltaTime,
+			direction.y*bulletSpeed*Time.deltaTime,
+			0
+		);
+		transform.Translate(offset);
+		Debug.Log(offset);
 		if((transform.position - transform.parent.position).magnitude > 35f) {
 			Destroy(this);
-		} else {
-			transform.Translate((Vector3) direction*bulletSpeed*Time.deltaTime);
 		}
 	}
 }

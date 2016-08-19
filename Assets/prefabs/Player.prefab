@@ -504,6 +504,9 @@ MonoBehaviour:
   shadow: {fileID: 1000012077861838}
   hitCollider: {fileID: 1000010639610482}
   holeCollider: {fileID: 1000012623491386}
+  sa_cooldownDuration: 2
+  bulletPrefab: {fileID: 1000013117017776, guid: ff783400becf6442c86ccd9f9e877555,
+    type: 2}
 --- !u!212 &212000010792669554
 SpriteRenderer:
   m_ObjectHideFlags: 1
