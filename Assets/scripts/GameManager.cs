@@ -67,7 +67,8 @@ public class GameManager : MonoBehaviour {
 			}
 		case Gamestates.LOBBY: {
 				// TODO: implement lobby logic (adding players, waiting for all to wear a mask)
-				Invoke("StartRound", 2f);
+				ShowCountdown();
+				Invoke("StartRound", 2.5f);
 				gamestate = Gamestates.IDLE;
 				break;
 			}
@@ -85,6 +86,11 @@ public class GameManager : MonoBehaviour {
 			}
 		}
 
+	}
+
+	private void ShowCountdown() {
+		Countdown countdown = GameObject.Find ("Countdown").GetComponent<Countdown>();
+		countdown.Show ();
 	}
 
 	private void SpawnPlayers() {
