@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Player : MonoBehaviour {
 
-	public enum PlayerState { IDLE = 0, RUNNING = 1, DASHING = 2, FALLING = 3, DEAD };
+	public enum PlayerState { IDLE = 0, RUNNING = 1, DASHING = 2, FALLING = 3, DEAD = 99 };
 	private PlayerState currentState = PlayerState.IDLE;
 
 	private string playerName;
@@ -33,7 +33,6 @@ public class Player : MonoBehaviour {
 	private float maskTimeLeft;
 	public Mask.TYPES maskType;
 
-	public int score {get;set;}
 	public Sprite[] masks;
 	public Sprite emptymask;
 
@@ -102,6 +101,9 @@ public class Player : MonoBehaviour {
 		playerNumber = number;
 		playerController.SetupMovementLabels(number);
 		bodyRenderer.color = colors[number-1];
+	}
+	public int GetNumber() {
+		return playerNumber;
 	}
 
 	public void GoToState(PlayerState newState) {
@@ -189,10 +191,6 @@ public class Player : MonoBehaviour {
 			specialAbilityReady = false;
 			specialAbilityCooldown = sa_cooldownDuration;
 		}
-	}
-
-	public void increaseScore() {
-		this.score += 1;
 	}
 
 	// Players takes a hit through dashes, boomerangs, projectiles....

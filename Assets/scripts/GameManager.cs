@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour {
 	public int maxNrLives;
 
 	private List<GameObject> players;
+	private int[] playerScores;
 
 	private ObjectSpawner objectSpawner;
 
@@ -21,53 +22,65 @@ public class GameManager : MonoBehaviour {
 		LOBBY,
 		ROUND,
 		WINNINGROUND,
-		WINNNGMATCH
+		WINNNGMATCH,
+		IDLE
 	};
 
 	void Awake() {
 		objectSpawner = (ObjectSpawner) gameObject.GetComponent<ObjectSpawner>();
+		players = new List<GameObject>();
+		playerScores = new int[nrPlayers];
+		for(int i = 0; i < nrPlayers; i++) {
+			playerScores[i] = 0;
+		}
 	}
 
 	void Start () {
-		players = new List<GameObject>();
-		SpawnUI();
-		SpawnPlayers();
+		
 	}
 
 	void Update () {
 		switch(gamestate) {
 		case Gamestates.ROUND: {
 				int numberOfPlayersAlive = 0;
-				Player lastStanding = null;
+				int lastStandingIndex = -1;
 				foreach (var p in players) {
+					Debug.Log(p);
 					if(p.GetComponent<Player>().GetCurrentState()!=Player.PlayerState.DEAD) {
 						numberOfPlayersAlive++;
-						lastStanding = p.GetComponent<Player>();
+						lastStandingIndex = p.GetComponent<Player>().GetNumber()-1;
 					}
 				}
+				Debug.Log(string.Format("%d alive Players in scene.", numberOfPlayersAlive));
 				if(numberOfPlayersAlive < 2) {
-					lastStanding.increaseScore();
-					if(lastStanding.score >= WINNING_SCORE) {
-						gamestate = Gamestates.WINNNGMATCH;
-					} else {
-					gamestate = Gamestates.WINNINGROUND;
+					playerScores[lastStandingIndex]++;
+					foreach (var score in playerScores) {
+						if(score >= WINNING_SCORE) {
+							gamestate = Gamestates.WINNNGMATCH;
+						} else {
+							gamestate = Gamestates.WINNINGROUND;
+						}
 					}
+
 				}
 				break;
 			}
 		case Gamestates.LOBBY: {
 				// TODO: implement lobby logic (adding players, waiting for all to wear a mask)
 				Invoke("StartRound", 2f);
+				gamestate = Gamestates.IDLE;
 				break;
 			}
 		case Gamestates.WINNINGROUND: {
 				// TODO: Show winning text/sprite, countdown from 3 to 1
 				Invoke("StartRound", 3f);
+				gamestate = Gamestates.IDLE;
 				break;
 			}
 		case Gamestates.WINNNGMATCH: {
 				// TODO: show winning player for 10 seconds
 				Invoke("StartLobby", 10f);
+				gamestate = Gamestates.IDLE;
 				break;
 			}
 		}
@@ -90,7 +103,14 @@ public class GameManager : MonoBehaviour {
 	}
 
 	private void StartRound() {
+		foreach (var p in players) {
+			Destroy(p.gameObject);
+		}
+		Destroy(livesController);
 		gamestate = Gamestates.ROUND;
+		SpawnUI();
+		SpawnPlayers();
+
 	}
 	private void StartLobby() {
 		gamestate = Gamestates.LOBBY;
