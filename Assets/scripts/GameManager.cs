@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour {
 
 	private void SpawnPlayers() {
 		for (int i = 0; i < nrPlayers; i++) {
-			GameObject player = objectSpawner.SpawnObjectFixed (i);
+			GameObject player = objectSpawner.SpawnObjectFixed(i);
 			player.GetComponent<Player>().SetNumber(i+1);
 			player.GetComponent<Player>().SetMaxNrLives(maxNrLives);
 			player.GetComponent<Player>().SetLivesController(livesController);
