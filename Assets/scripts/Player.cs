@@ -4,14 +4,14 @@ using System.Collections.Generic;
 
 public class Player : MonoBehaviour {
 
-	public enum PlayerState { IDLE = 0, RUNNING = 1, DASHING = 2, FALLING = 3, DEAD };
+	public enum PlayerState { IDLE = 0, RUNNING = 1, DASHING = 2, FALLING = 3, DEAD = 99 };
 	private PlayerState currentState = PlayerState.IDLE;
 
 	private string playerName;
 	private int playerNumber;
 	public List<Color> colors;
 
-	public int startNrLives;
+	private int startNrLives;
 	private int nrLives; // Players
 
 	private Animator animator;
@@ -33,7 +33,6 @@ public class Player : MonoBehaviour {
 	private float maskTimeLeft;
 	public Mask.TYPES maskType;
 
-	public int score {get;set;}
 	public Sprite[] masks;
 	public Sprite emptymask;
 
@@ -46,7 +45,7 @@ public class Player : MonoBehaviour {
 	private float specialAbilityCooldown = 0;
 	private bool specialAbilityReady = true;
 	public GameObject bulletPrefab;
-	public LivesController livesController;
+	private LivesController livesController;
 
 	void Awake() {
 		playerController = gameObject.GetComponent<PlayerController>();
@@ -55,8 +54,15 @@ public class Player : MonoBehaviour {
 	}
 
 	void Start () {
-		nrLives = startNrLives;
-		livesController.SetNrLives(nrLives); // Spawns the UI elements
+	}
+		
+	public void SetMaxNrLives(int lives) {
+		startNrLives = lives;
+		nrLives = lives;
+	}
+
+	public void SetLivesController(LivesController c) {
+		livesController = c;
 	}
 
 	void Update () {
@@ -64,6 +70,7 @@ public class Player : MonoBehaviour {
 			timeTillDeath -= Time.deltaTime;
 			if (timeTillDeath <= 0) {
 				nrLives--;
+				Debug.Log(playerNumber);
 				livesController.SetLives(playerNumber, nrLives);
 				StopFalling();
 				if (nrLives > 0) {
@@ -96,6 +103,9 @@ public class Player : MonoBehaviour {
 		playerController.SetupMovementLabels(number);
 		bodyRenderer.color = colors[number-1];
 	}
+	public int GetNumber() {
+		return playerNumber;
+	}
 
 	public void GoToState(PlayerState newState) {
 		animator.SetInteger("state", (int) newState);
@@ -116,6 +126,10 @@ public class Player : MonoBehaviour {
 		// don't collide while falling
 		hitCollider.SetActive(false);
 		holeCollider.SetActive(false);
+
+		// Don't respawn with mask
+		if (hasMask)
+			removeMask();
 
 		// make player fall behind platform
 		Debug.Log(tag);
@@ -180,10 +194,6 @@ public class Player : MonoBehaviour {
 		}
 	}
 
-	public void increaseScore() {
-		this.score += 1;
-	}
-
 	// Players takes a hit through dashes, boomerangs, projectiles....
 	public void TakeHit(Vector2 impactDirection, float forceStrength) {
 		// Play animation
@@ -212,8 +222,8 @@ public class Player : MonoBehaviour {
 			for(int j = -1;j<2;j++) {
 				if(!(i==0&&j==0)){
 					GameObject bullet = GameObject.Instantiate(bulletPrefab);
-					bullet.transform.parent = transform;
-					bullet.transform.localPosition = new Vector2(i,j);
+					bullet.transform.position = transform.position + new Vector3(2f*i,2f*j,0);
+					bullet.GetComponent<Bullet>().direction = new Vector2(i,j);
 				}
 			}
 		}

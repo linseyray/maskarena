@@ -4,75 +4,56 @@ using System.Collections.Generic;
 
 public class LivesController : MonoBehaviour {
 
-	public bool initialised = false;
-
-	public int maxNrLives;
+	private int maxNrLives;
 	public GameObject fullHeartPrefab;
 	public GameObject emptyHeartPrefab;
 
-	private List<GameObject>[] fullHearts; // For each player, their X amount of lives
-	private List<GameObject>[] emptyHearts;
+	private GameObject[][] fullHearts; // For each player, their X amount of lives
+	private GameObject[][] emptyHearts;
 
 	public Transform[] positions;
 	public float heartOffset = 40;
-	public GameObject[] portraits;
 
 	void Awake() {
-		fullHearts = new List<GameObject>[4];
-		emptyHearts = new List<GameObject>[4];
-		for (int i = 0; i < fullHearts.Length; i++) {
-			fullHearts[i] = new List<GameObject>();
-			emptyHearts[i] = new List<GameObject>();
-		}
 	}
 
-	// Use this for initialization
 	void Start () {
+		fullHearts = new GameObject[4][];
+		emptyHearts = new GameObject[4][];
+
+		// Instantiate the hearts
+		for (int i = 0; i < 4; i++) {
+			fullHearts[i] = new GameObject[maxNrLives];
+			emptyHearts[i] = new GameObject[maxNrLives];
+			for (int j = 0; j < maxNrLives; j++) {
+				Vector2 position = positions[i].position;
+				position.x += heartOffset * j;
+				GameObject fullHeart = GameObject.Instantiate(fullHeartPrefab);
+				GameObject emptyHeart = GameObject.Instantiate(emptyHeartPrefab);
+				fullHeart.transform.position = position;
+				emptyHeart.transform.position = position;
+				fullHearts[i][j] = fullHeart;
+				emptyHearts[i][j] = emptyHeart;
+			}
+		}
 	}
 	
-	// Update is called once per frame
 	void Update () {
-		if (!initialised) {
-			// Instantiate the hearts
-			for (int i = 0; i < 4; i++) {
-				for (int j = 0; j < this.maxNrLives; j++) {
-					Vector2 position = positions[i].position;
-					position.x += heartOffset * j;
-					GameObject fullHeart = GameObject.Instantiate(fullHeartPrefab);
-					GameObject emptyHeart = GameObject.Instantiate(emptyHeartPrefab);
-					fullHeart.transform.position = position;
-					emptyHeart.transform.position = position;
-					fullHearts[i].Add(fullHeart);
-					emptyHearts[i].Add(emptyHeart);
-				}
-			}
-			Debug.Log("Initialised");
-			initialised = true;
-		}
 	}
 
 	public void SetLives(int playerNumber, int nrLives) {
-		if (!initialised) {
-			Debug.Log("returning");
-			return;
+		for (int i = 0; i < fullHearts[playerNumber-1].Length; i++) {
+			fullHearts[playerNumber-1][i].SetActive(false);
 		}
-		
-		Debug.Log("nrLives " + nrLives);
-		for (int i = 0; i < fullHearts.Length; i++) {
+			
+		for (int i = 0; i < fullHearts[playerNumber-1].Length; i++) {
 			if (i+1 <= nrLives) {
 				fullHearts[playerNumber-1][i].SetActive(true);
-				emptyHearts[playerNumber-1][i].SetActive(false);
-			}
-			else 
-			if (i+1 <= maxNrLives) {
-				fullHearts[playerNumber-1][i].SetActive(false);
-				emptyHearts[playerNumber-1][i].SetActive(true);
 			}
 		}
 	}
 
-	// Set from Player.cs
-	public void SetNrLives(int lives) {
-		this.maxNrLives = lives;
+	public void SetMaxNrLives(int lives) {
+		maxNrLives = lives;
 	}
 }

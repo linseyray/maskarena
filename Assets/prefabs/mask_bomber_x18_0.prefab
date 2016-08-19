@@ -26,7 +26,7 @@ GameObject:
   - 61: {fileID: 61000014254863696}
   m_Layer: 0
   m_Name: mask_bomber_x18_0
-  m_TagString: Untagged
+  m_TagString: Mask
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39,7 +39,7 @@ Transform:
   m_GameObject: {fileID: 1000014266493396}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.0438423, y: -0.4847881, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
@@ -86,7 +86,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8678cd052156cfe41b55ca54f110eb00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maskDisappearAnimationTime: 0
+  maskDisappearAnimationTime: 5
+  maskDisappearTime: 10
+  maskLifeTime: 0
 --- !u!114 &114000010814309724
 MonoBehaviour:
   m_ObjectHideFlags: 1
