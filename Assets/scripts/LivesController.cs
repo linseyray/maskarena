@@ -14,6 +14,8 @@ public class LivesController : MonoBehaviour {
 	public Transform[] positions;
 	public float heartOffset = 40;
 
+	public GameObject[] portraits;
+
 	void Awake() {
 	}
 
@@ -51,6 +53,18 @@ public class LivesController : MonoBehaviour {
 				fullHearts[playerNumber-1][i].SetActive(true);
 			}
 		}
+
+		// Grey out if dead
+		Debug.Log(portraits.Length);
+		SpriteRenderer spriteRenderer = portraits[playerNumber-1].gameObject.GetComponent<SpriteRenderer>();
+		Color color = spriteRenderer.color;
+		if (nrLives == 0) {
+			// Grey out portrait
+			color.a = 0.5f;
+		}
+		else 
+			color.a = 1.0F;
+		spriteRenderer.color = color;
 	}
 
 	public void SetMaxNrLives(int lives) {

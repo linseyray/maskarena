@@ -73,7 +73,6 @@ public class Player : MonoBehaviour {
 			timeTillDeath -= Time.deltaTime;
 			if (timeTillDeath <= 0) {
 				nrLives--;
-				Debug.Log(playerNumber);
 				livesController.SetLives(playerNumber, nrLives);
 				StopFalling();
 				if (nrLives > 0) {
@@ -135,7 +134,6 @@ public class Player : MonoBehaviour {
 			removeMask();
 
 		// make player fall behind platform
-		Debug.Log(tag);
 		if (tag == "TopTrigger") {
 			bodyRenderer.sortingLayerName = "FallingObjects";
 			maskRenderer.sortingLayerName = "FallingObjects";
@@ -159,6 +157,7 @@ public class Player : MonoBehaviour {
 	}
 
 	public void ReceiveMask(Mask.TYPES type){
+		Debug.Log("Picked up Mask! (" + type + ")");
 		this.maskType = type;
 		maskTimeLeft = defaultMaskTimeout;
 		// idea: if(type == Mask.TYPES.specialLongDurationMask) maskTimeLeft = 3*defaultMaskTimeout;
@@ -169,6 +168,10 @@ public class Player : MonoBehaviour {
 		specialAbilityReady = true;
 		specialAbilityCooldown = sa_cooldownDuration;
 		UnmuteTrack ();
+
+		// Now we stinggggg!!
+		if (type == Mask.TYPES.CACTUS)
+			hitCollider.SetActive(true);
 	}
 
 	private void removeMask(){
@@ -177,26 +180,26 @@ public class Player : MonoBehaviour {
 		maskRenderer.sprite = Sprite.Instantiate(emptymask);
 		specialAbilityReady = false;
 		MuteTrack();
+
+		// No more sting :(
+		if (maskType == Mask.TYPES.CACTUS)
+			hitCollider.SetActive(false);
 	}
 
 	public void specialAction(){
 		if(hasMask && specialAbilityReady) {
 			switch(maskType) {
 			case Mask.TYPES.SATAN:
-				{
 					spawnFireRain();
 					break;
-				}
+			case Mask.TYPES.CACTUS:
+				break;
 			case Mask.TYPES.BOMB:
-				{
 					layBomb();
 					break;
-				}
 			case Mask.TYPES.CHICKEN:
-				{
 					shootEgg();
 					break;
-				}
 			default:
 				break;
 			}
