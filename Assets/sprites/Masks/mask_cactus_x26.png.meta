@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 9122eb67f52c8ec4c96fc3759b97d234
-timeCreated: 1471558798
+guid: 4dd4bd820b91bff41a5d1d2b002cf30e
+timeCreated: 1471595249
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: mask_satan_idle_x26_0
-    21300002: mask_satan_idle_x26_1
-    21300004: mask_satan_idle_x26_2
-    21300006: mask_satan_idle_x26_3
+    21300000: mask_cactus_x26_0
+    21300002: mask_cactus_x26_1
+    21300004: mask_cactus_x26_2
+    21300006: mask_cactus_x26_3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -57,7 +57,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: mask_satan_idle_x26_0
+      name: mask_cactus_x26_0
       rect:
         serializedVersion: 2
         x: 0
@@ -70,7 +70,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: mask_satan_idle_x26_1
+      name: mask_cactus_x26_1
       rect:
         serializedVersion: 2
         x: 26
@@ -83,7 +83,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: mask_satan_idle_x26_2
+      name: mask_cactus_x26_2
       rect:
         serializedVersion: 2
         x: 52
@@ -96,7 +96,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: mask_satan_idle_x26_3
+      name: mask_cactus_x26_3
       rect:
         serializedVersion: 2
         x: 78

@@ -504,6 +504,11 @@ MonoBehaviour:
   - {fileID: 4000013267522346}
   - {fileID: 4000010467556414}
   heartOffset: 0.25
+  portraits:
+  - {fileID: 1000010561323008}
+  - {fileID: 1000011396736676}
+  - {fileID: 1000013158278532}
+  - {fileID: 1000012212723618}
 --- !u!212 &212000010002425640
 SpriteRenderer:
   m_ObjectHideFlags: 1

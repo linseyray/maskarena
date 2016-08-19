@@ -267,7 +267,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
@@ -464,6 +464,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidBody2D: {fileID: 50000010492334344}
   dashHitStrength: 25
+  cactusHitStrength: 15
+  hitForceMultiplier: 2
   hitSound: {fileID: 8300000, guid: 65c36bb66c993704a8c7a97d3dcb0606, type: 3}
 --- !u!114 &114000010998279936
 MonoBehaviour:
@@ -503,6 +505,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 3db7d970ab05d8940a87e59f2932cf33, type: 3}
   - {fileID: 21300000, guid: 205b0cc3fd259d94f88ab472a80ab711, type: 3}
   - {fileID: 21300000, guid: e6f7b78de26fe2544bfbae455952923a, type: 3}
+  - {fileID: 21300000, guid: fecfb610c14f2e340b8cd098efc85c98, type: 3}
   emptymask: {fileID: 21300000, guid: 00ba96bf1120c4f46954e69463c581db, type: 3}
   shadow: {fileID: 1000012077861838}
   hitCollider: {fileID: 1000010639610482}
@@ -511,7 +514,12 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1000013117017776, guid: ff783400becf6442c86ccd9f9e877555,
     type: 2}
   bombPrefab: {fileID: 1000010721714146, guid: bb120c765c7e142d2852d413e0390eaa, type: 2}
-  winnerScreens: []
+  EggPrefab: {fileID: 1000012294004238, guid: 2e34b783447c04bcba5afcc465f10f48, type: 2}
+  winnerScreens:
+  - {fileID: 1000011551654268, guid: bf90aa5801aa8406abcb5121f749a77e, type: 2}
+  - {fileID: 1000011918249158, guid: 7d7a2484296974bf8949bb43e26d6be9, type: 2}
+  - {fileID: 1000010516050030, guid: b5539e2ca48514c3aac7a285414c9a5c, type: 2}
+  - {fileID: 1000010548803920, guid: 448e2e1af1b344aa8a3f7941998ca4f9, type: 2}
 --- !u!114 &114000012182716192
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -526,7 +534,7 @@ MonoBehaviour:
   bodyRenderer: {fileID: 212000013606345432}
   maskRenderer: {fileID: 212000011667258620}
   speed: 20
-  dashSpeed: 7.5
+  dashSpeed: 5.5
   dashLength: 0.25
   hitController: {fileID: 114000010715587930}
   stopSpeed: 0.3
@@ -558,8 +566,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1975818983
-  m_SortingOrder: 0
+  m_SortingLayerID: 923793847
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: fb98d35e7399ee0489c45bb234b0c606, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

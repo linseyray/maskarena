@@ -9,46 +9,47 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1000011831100216}
+  m_RootGameObject: {fileID: 1000014166387108}
   m_IsPrefabParent: 1
---- !u!1 &1000011831100216
+--- !u!1 &1000014166387108
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 4000011663701418}
-  - 212: {fileID: 212000012948754452}
-  - 95: {fileID: 95000012853097846}
-  - 58: {fileID: 58000012215874316}
-  - 114: {fileID: 114000013666501162}
+  - 4: {fileID: 4000012661828178}
+  - 212: {fileID: 212000013613034918}
+  - 95: {fileID: 95000011333150730}
+  - 114: {fileID: 114000013882128336}
+  - 114: {fileID: 114000014177224760}
+  - 61: {fileID: 61000013246777292}
   m_Layer: 0
-  m_Name: bombBOOM_0
-  m_TagString: bomb
+  m_Name: mask_cactus
+  m_TagString: Mask
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4000011663701418
+--- !u!4 &4000012661828178
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011831100216}
+  m_GameObject: {fileID: 1000014166387108}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.4425405, y: -0.39019528, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 2.1519864, y: 0.9577521, z: 0}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!58 &58000012215874316
-CircleCollider2D:
+--- !u!61 &61000013246777292
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011831100216}
+  m_GameObject: {fileID: 1000014166387108}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -56,17 +57,17 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.24
---- !u!95 &95000012853097846
+  m_Size: {x: 0.26, y: 0.29}
+--- !u!95 &95000011333150730
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011831100216}
+  m_GameObject: {fileID: 1000014166387108}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ea2f9c4e7f3114075836746e63c93a5e, type: 2}
+  m_Controller: {fileID: 9100000, guid: 4a5ec6268138d7b4db4a26abd3debe53, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -74,23 +75,38 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114000013666501162
+--- !u!114 &114000013882128336
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011831100216}
+  m_GameObject: {fileID: 1000014166387108}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0da3d1daf11bd422c957a9e3d9909d81, type: 3}
+  m_Script: {fileID: 11500000, guid: f2e34c6272ef97045b489406b8f41349, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!212 &212000012948754452
+  type: 3
+--- !u!114 &114000014177224760
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014166387108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8678cd052156cfe41b55ca54f110eb00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maskDisappearAnimationTime: 5
+  maskDisappearTime: 10
+  maskLifeTime: 0
+--- !u!212 &212000013613034918
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011831100216}
+  m_GameObject: {fileID: 1000014166387108}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -112,9 +128,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 923793847
+  m_SortingLayerID: -569498605
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 26e0775df4a1c4542bcb8165bd7ea333, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fecfb610c14f2e340b8cd098efc85c98, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -14,6 +14,8 @@ public class LivesController : MonoBehaviour {
 	public Transform[] positions;
 	public float heartOffset = 40;
 
+	public GameObject[] portraits;
+
 	void Awake() {
 	}
 
@@ -24,7 +26,8 @@ public class LivesController : MonoBehaviour {
 		// Instantiate the hearts
 		for (int i = 0; i < 4; i++) {
 			fullHearts[i] = new GameObject[maxNrLives];
-			emptyHearts[i] = new GameObject[maxNrLives];
+			emptyHearts[i] = new GameObject[maxNrLives];				
+			int orderInLayer = maxNrLives;
 			for (int j = 0; j < maxNrLives; j++) {
 				Vector2 position = positions[i].position;
 				position.x += heartOffset * j;
@@ -32,8 +35,11 @@ public class LivesController : MonoBehaviour {
 				GameObject emptyHeart = GameObject.Instantiate(emptyHeartPrefab);
 				fullHeart.transform.position = position;
 				emptyHeart.transform.position = position;
+				fullHeart.GetComponent<SpriteRenderer>().sortingOrder = orderInLayer;
+				emptyHeart.GetComponent<SpriteRenderer>().sortingOrder = orderInLayer;
 				fullHearts[i][j] = fullHeart;
 				emptyHearts[i][j] = emptyHeart;
+				orderInLayer--;
 			}
 		}
 	}
@@ -51,6 +57,18 @@ public class LivesController : MonoBehaviour {
 				fullHearts[playerNumber-1][i].SetActive(true);
 			}
 		}
+
+		// Grey out if dead
+		Debug.Log(portraits.Length);
+		SpriteRenderer spriteRenderer = portraits[playerNumber-1].gameObject.GetComponent<SpriteRenderer>();
+		Color color = spriteRenderer.color;
+		if (nrLives == 0) {
+			// Grey out portrait
+			color.a = 0.5f;
+		}
+		else 
+			color.a = 1.0F;
+		spriteRenderer.color = color;
 	}
 
 	public void SetMaxNrLives(int lives) {

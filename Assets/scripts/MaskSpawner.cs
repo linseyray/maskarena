@@ -12,18 +12,21 @@ public class MaskSpawner : MonoBehaviour {
 
 	float spawnTime;
 	float timepassed;
+	public GameObject gameManager;
 
 	void Start () {
 		spawnTime = Random.Range(spawnInterval-intervalRandomRange, spawnInterval+intervalRandomRange);
 	}
 		
 	void Update () {
-		if(timepassed > spawnTime) {
-			SpawnObjectRandomInEllipse();
-			timepassed = 0;
-			spawnTime = Random.Range(spawnInterval-intervalRandomRange, spawnInterval+intervalRandomRange);
+		if(gameManager.GetComponent<GameManager>().gamestate == GameManager.Gamestates.ROUND) {
+			if(timepassed > spawnTime) {
+				SpawnObjectRandomInEllipse();
+				timepassed = 0;
+				spawnTime = Random.Range(spawnInterval-intervalRandomRange, spawnInterval+intervalRandomRange);
+			}
+			timepassed += Time.deltaTime;
 		}
-		timepassed += Time.deltaTime;
 	}
 
 	public GameObject SpawnObjectRandomInEllipse() {

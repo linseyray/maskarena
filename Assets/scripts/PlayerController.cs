@@ -120,4 +120,8 @@ public class PlayerController : MonoBehaviour {
 		bodyRenderer.flipX = facingLeft;
 		maskRenderer.flipX = facingLeft;
 	}
+
+	public bool IsDashing() {
+		return isDashing;
+	}
 }

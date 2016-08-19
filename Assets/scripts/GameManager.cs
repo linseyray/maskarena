@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour {
 	public int WINNING_SCORE = 3;
 	public GameObject uiHealthPrefab;
 	public GameObject winnerBackgroundGameObject;
+	public GameObject titleScreen;
 
 	private Player winnerPlayer;
 	private List<GameObject> players;
@@ -23,7 +24,8 @@ public class GameManager : MonoBehaviour {
 		ROUND,
 		WINNINGROUND,
 		WINNNGMATCH,
-		IDLE
+		IDLE,
+		TITLE
 	};
 
 	void Awake() {
@@ -37,7 +39,6 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void Start () {
-		StartLobby();
 	}
 
 	void Update () {
@@ -86,6 +87,13 @@ public class GameManager : MonoBehaviour {
 				gamestate = Gamestates.IDLE;
 				break;
 			}
+		case Gamestates.TITLE: {
+				Invoke("StartLobby", 5f);
+				gamestate = Gamestates.IDLE;
+				break;
+			}
+		default:
+			break;
 		}
 
 	}
@@ -125,9 +133,11 @@ public class GameManager : MonoBehaviour {
 		gamestate = Gamestates.ROUND;
 		SpawnUI();
 		SpawnPlayers();
-
 	}
 	private void StartLobby() {
+		if(titleScreen.activeInHierarchy) {
+			titleScreen.SetActive(false);
+		}
 		gamestate = Gamestates.LOBBY;
 	}
 }

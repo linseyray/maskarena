@@ -46,6 +46,8 @@ public class Player : MonoBehaviour {
 	private bool specialAbilityReady = true;
 	public GameObject bulletPrefab;
 	public GameObject bombPrefab;
+	public GameObject EggPrefab;
+
 	private LivesController livesController;
 
 	public GameObject[] winnerScreens;
@@ -74,7 +76,6 @@ public class Player : MonoBehaviour {
 			timeTillDeath -= Time.deltaTime;
 			if (timeTillDeath <= 0) {
 				nrLives--;
-				Debug.Log(playerNumber);
 				livesController.SetLives(playerNumber, nrLives);
 				StopFalling();
 				if (nrLives > 0) {
@@ -83,7 +84,6 @@ public class Player : MonoBehaviour {
 				}
 				else {
 					// Die
-					gameObject.SetActive(false);
 					currentState = PlayerState.DEAD;
 				}
 			}
@@ -138,7 +138,6 @@ public class Player : MonoBehaviour {
 			removeMask();
 
 		// make player fall behind platform
-		Debug.Log(tag);
 		if (tag == "TopTrigger") {
 			bodyRenderer.sortingLayerName = "FallingObjects";
 			maskRenderer.sortingLayerName = "FallingObjects";
@@ -162,6 +161,7 @@ public class Player : MonoBehaviour {
 	}
 
 	public void ReceiveMask(Mask.TYPES type){
+		Debug.Log("Picked up Mask! (" + type + ")");
 		this.maskType = type;
 		maskTimeLeft = defaultMaskTimeout;
 		// idea: if(type == Mask.TYPES.specialLongDurationMask) maskTimeLeft = 3*defaultMaskTimeout;
@@ -172,6 +172,10 @@ public class Player : MonoBehaviour {
 		specialAbilityReady = true;
 		specialAbilityCooldown = sa_cooldownDuration;
 		UnmuteTrack ();
+
+		// Now we stinggggg!!
+		if (type == Mask.TYPES.CACTUS)
+			hitCollider.SetActive(true);
 	}
 
 	public GameObject GetWinnerScreen() {
@@ -184,21 +188,26 @@ public class Player : MonoBehaviour {
 		maskRenderer.sprite = Sprite.Instantiate(emptymask);
 		specialAbilityReady = false;
 		MuteTrack();
+
+		// No more sting :(
+		if (maskType == Mask.TYPES.CACTUS)
+			hitCollider.SetActive(false);
 	}
 
 	public void specialAction(){
 		if(hasMask && specialAbilityReady) {
 			switch(maskType) {
 			case Mask.TYPES.SATAN:
-				{
 					spawnFireRain();
 					break;
-				}
+			case Mask.TYPES.CACTUS:
+				break;
 			case Mask.TYPES.BOMB:
-				{
 					layBomb();
 					break;
-				}
+			case Mask.TYPES.CHICKEN:
+					shootEgg();
+					break;
 			default:
 				break;
 			}
@@ -235,7 +244,7 @@ public class Player : MonoBehaviour {
 			for(int j = -1;j<2;j++) {
 				if(!(i==0&&j==0)){
 					GameObject bullet = GameObject.Instantiate(bulletPrefab);
-					bullet.transform.position = transform.position + new Vector3(2f*i,2f*j,0);
+					bullet.transform.position = transform.position + new Vector3(1f*i,1f*j,0);
 					bullet.GetComponent<Bullet>().direction = new Vector2(i,j);
 				}
 			}
@@ -244,5 +253,11 @@ public class Player : MonoBehaviour {
 	private void layBomb() {
 		GameObject bomb = GameObject.Instantiate(bombPrefab);
 		bomb.transform.position = transform.position;
+	}
+	private void shootEgg() {
+		GameObject bullet = GameObject.Instantiate(EggPrefab);
+		Vector2 direction = -rigidBody2D.velocity.normalized;
+		bullet.GetComponent<Bullet>().direction = direction;
+		bullet.transform.position = transform.position + (Vector3) direction;
 	}
 }

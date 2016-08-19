@@ -1,13 +1,17 @@
 fileFormatVersion: 2
-guid: 9122eb67f52c8ec4c96fc3759b97d234
-timeCreated: 1471558798
+guid: e6468f1b5825840d9b50452ba6d0b479
+timeCreated: 1471601257
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: mask_satan_idle_x26_0
-    21300002: mask_satan_idle_x26_1
-    21300004: mask_satan_idle_x26_2
-    21300006: mask_satan_idle_x26_3
+    21300000: title_screen_x400_0
+    21300002: title_screen_x400_1
+    21300004: title_screen_x400_2
+    21300006: title_screen_x400_3
+    21300008: title_screen_x400_4
+    21300010: title_screen_x400_5
+    21300012: title_screen_x400_6
+    21300014: title_screen_x400_7
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -57,52 +61,104 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: mask_satan_idle_x26_0
+      name: title_screen_x400_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 26
-        height: 29
+        width: 400
+        height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: mask_satan_idle_x26_1
+      name: title_screen_x400_1
       rect:
         serializedVersion: 2
-        x: 26
+        x: 400
         y: 0
-        width: 26
-        height: 29
+        width: 400
+        height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: mask_satan_idle_x26_2
+      name: title_screen_x400_2
       rect:
         serializedVersion: 2
-        x: 52
+        x: 800
         y: 0
-        width: 26
-        height: 29
+        width: 400
+        height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: mask_satan_idle_x26_3
+      name: title_screen_x400_3
       rect:
         serializedVersion: 2
-        x: 78
+        x: 1200
         y: 0
-        width: 26
-        height: 29
+        width: 400
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: title_screen_x400_4
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 0
+        width: 400
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: title_screen_x400_5
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 0
+        width: 400
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: title_screen_x400_6
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 0
+        width: 400
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: title_screen_x400_7
+      rect:
+        serializedVersion: 2
+        x: 2800
+        y: 0
+        width: 400
+        height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
