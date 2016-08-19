@@ -18,12 +18,14 @@ public class Mask_pickup : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
+		Debug.Log("mask collision");
 		if(other.tag.ToString().Equals("PlayerCollider")) {
-		// could also compare to global tag list
+			// could also compare to global tag list
 			Mask mask = this.GetComponent<Mask>();
 			other.transform.parent.GetComponent<Player>().ReceiveMask(mask.type);
+			// When picked up, destroy immediately
+			Object.Destroy(this.gameObject);
 			// TODO: trigger pickup animation
 		}
-		Debug.Log("mask collision");
 	}
 }
