@@ -325,7 +325,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -425,7 +425,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
-  m_WarningMessage:
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114000010715587930
@@ -437,8 +437,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 345234b22f084da46ac26a61e96ef79b, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   rigidBody2D: {fileID: 50000010492334344}
   dashHitStrength: 25
   hitSound: {fileID: 8300000, guid: 65c36bb66c993704a8c7a97d3dcb0606, type: 3}
@@ -451,8 +451,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 359b1d70194418744a5c45e7b55398fa, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000012182716192
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -462,8 +462,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4416a3679c5a73c4bad4f0b0f9726358, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   bodyRenderer: {fileID: 212000013606345432}
   maskRenderer: {fileID: 212000011667258620}
   speed: 20
@@ -474,24 +474,24 @@ MonoBehaviour:
   dashSound: {fileID: 8300000, guid: 148e50284b616be49b5cf9854bfbb91e, type: 3}
 --- !u!114 &114000012277101402
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1000011132157130}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83295dd54768bbd4597940e584bca67a, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   colors:
   - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0, g: 0.6275863, b: 1, a: 1}
-  - {r: 0, g: 1, b: 0.17241383, a: 1}
+  - {r: 0, g: 0.627451, b: 1, a: 1}
+  - {r: 0, g: 1, b: 0.16862746, a: 1}
   - {r: 0.99607843, g: 0.4862745, b: 0.007843138, a: 1}
-  startNrLives: 5
+  startNrLives: 0
   bodyRenderer: {fileID: 212000013606345432}
   maskRenderer: {fileID: 212000011667258620}
-  fallingTime: 0.5
+  fallingTime: 0
   fallSpeed: 5
   maskGameobject: {fileID: 0}
   defaultMaskTimeout: 5
@@ -506,6 +506,7 @@ MonoBehaviour:
   holeCollider: {fileID: 1000012623491386}
   sa_cooldownDuration: 2
   bulletPrefab: {fileID: 1000013117017776, guid: ff783400becf6442c86ccd9f9e877555,
+    type: 2}
   livesController: {fileID: 114000010131910366, guid: 61e5224e9b1cd5a478c780eb7d5579f2,
     type: 2}
 --- !u!212 &212000010792669554
@@ -522,7 +523,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 0
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_SubsetIndices:
+  m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
@@ -555,7 +556,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 0
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_SubsetIndices:
+  m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
@@ -588,7 +589,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 0
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_SubsetIndices:
+  m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}

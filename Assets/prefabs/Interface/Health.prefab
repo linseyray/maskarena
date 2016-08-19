@@ -494,7 +494,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6724ab333b2a1884096c58ae33e65e90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxNrLives: 5
+  initialised: 0
+  maxNrLives: 0
   fullHeartPrefab: {fileID: 1000011633714180, guid: 66991ebf11e84ae4abafda3095b35b11,
     type: 2}
   emptyHeartPrefab: {fileID: 1000013919898358, guid: 29236df058e2ef8419821ce672ad0453,
