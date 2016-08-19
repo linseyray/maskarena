@@ -26,7 +26,8 @@ public class LivesController : MonoBehaviour {
 		// Instantiate the hearts
 		for (int i = 0; i < 4; i++) {
 			fullHearts[i] = new GameObject[maxNrLives];
-			emptyHearts[i] = new GameObject[maxNrLives];
+			emptyHearts[i] = new GameObject[maxNrLives];				
+			int orderInLayer = maxNrLives;
 			for (int j = 0; j < maxNrLives; j++) {
 				Vector2 position = positions[i].position;
 				position.x += heartOffset * j;
@@ -34,8 +35,11 @@ public class LivesController : MonoBehaviour {
 				GameObject emptyHeart = GameObject.Instantiate(emptyHeartPrefab);
 				fullHeart.transform.position = position;
 				emptyHeart.transform.position = position;
+				fullHeart.GetComponent<SpriteRenderer>().sortingOrder = orderInLayer;
+				emptyHeart.GetComponent<SpriteRenderer>().sortingOrder = orderInLayer;
 				fullHearts[i][j] = fullHeart;
 				emptyHearts[i][j] = emptyHeart;
+				orderInLayer--;
 			}
 		}
 	}
