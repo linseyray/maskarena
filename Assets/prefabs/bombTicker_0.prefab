@@ -70,6 +70,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3585fd5a3d8ad40be8f0e07cfdf2fb16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bombBoomPrefab: {fileID: 1000011831100216, guid: 760a6b7cb53a449588e60d40586f5235,
+    type: 2}
 --- !u!212 &212000011414047922
 SpriteRenderer:
   m_ObjectHideFlags: 1

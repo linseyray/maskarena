@@ -236,7 +236,7 @@ public class Player : MonoBehaviour {
 			for(int j = -1;j<2;j++) {
 				if(!(i==0&&j==0)){
 					GameObject bullet = GameObject.Instantiate(bulletPrefab);
-					bullet.transform.position = transform.position + new Vector3(2f*i,2f*j,0);
+					bullet.transform.position = transform.position + new Vector3(1f*i,1f*j,0);
 					bullet.GetComponent<Bullet>().direction = new Vector2(i,j);
 				}
 			}

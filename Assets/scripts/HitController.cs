@@ -61,7 +61,11 @@ public class HitController : MonoBehaviour {
 			float forceStrength = 2*dashHitStrength;
 			this.transform.parent.GetComponent<Player>().TakeHit(impactDirection, forceStrength);
 			Destroy(other.gameObject);
-
+		} else if (other.gameObject.tag == "bomb") {
+			Debug.Log("Bomb explosion collision");
+			Vector2 impactDirection = (transform.position - other.transform.position).normalized;
+			float forceStrength = dashHitStrength;
+			this.transform.parent.GetComponent<Player>().TakeHit(impactDirection, forceStrength);
 		}
 	}
 
