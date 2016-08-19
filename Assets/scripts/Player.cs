@@ -81,7 +81,6 @@ public class Player : MonoBehaviour {
 				}
 				else {
 					// Die
-					gameObject.SetActive(false);
 					currentState = PlayerState.DEAD;
 				}
 			}
