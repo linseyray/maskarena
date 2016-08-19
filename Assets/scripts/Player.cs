@@ -176,6 +176,12 @@ public class Player : MonoBehaviour {
 					spawnFireRain();
 					break;
 				}
+			case Mask.TYPES.BOMB:
+				{
+					layBomb();
+					break;
+				}
+
 			default:
 				break;
 			}
@@ -216,10 +222,15 @@ public class Player : MonoBehaviour {
 			for(int j = -1;j<2;j++) {
 				if(!(i==0&&j==0)){
 					GameObject bullet = GameObject.Instantiate(bulletPrefab);
-					bullet.transform.parent = transform;
-					bullet.transform.localPosition = new Vector2(i,j);
+					Vector2 direction = new Vector2(2f*i,2f*j);
+					bullet.transform.position = this.transform.position + (Vector3)direction;
+					bullet.GetComponent<Bullet>().direction = direction;
+
 				}
 			}
 		}
+	}
+	private void layBomb(){
+		
 	}
 }

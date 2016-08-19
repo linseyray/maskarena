@@ -47,6 +47,12 @@ public class HitController : MonoBehaviour {
 
 			// Reduce sliding after hit
 			rigidBody2D.velocity = new Vector2(0,0);
+		} else if (other.gameObject.tag == "bullet") {
+			Vector2 impactDirection = other.gameObject.GetComponent<Bullet>().direction.normalized;
+			float forceStrength = 2*dashHitStrength;
+			this.transform.parent.GetComponent<Player>().TakeHit(impactDirection, forceStrength);
+			Destroy(other.gameObject);
+
 		}
 	}
 
