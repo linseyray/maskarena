@@ -615,6 +615,10 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 1.25
       objectReference: {fileID: 0}
+    - target: {fileID: 1000012319473636, guid: 12d0abc8825a148fc8b489e17f7e4444, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 61000013699530422, guid: 12d0abc8825a148fc8b489e17f7e4444, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 12d0abc8825a148fc8b489e17f7e4444, type: 2}
@@ -912,6 +916,26 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!60 &653540898
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 653540896}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  m_Points:
+    m_Paths:
+    - - {x: -0.11925612, y: 0.15480661}
+      - {x: -0.26787186, y: -0.010000038}
+      - {x: -0.16919623, y: -0.15480652}
+      - {x: 0.2522914, y: -0.12883921}
+      - {x: 0.106874466, y: -0.002321434}
+      - {x: 0.01129427, y: 0.14441967}
 --- !u!1 &778819470
 GameObject:
   m_ObjectHideFlags: 0
@@ -1624,7 +1648,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1618605019
 Transform:
   m_ObjectHideFlags: 0
