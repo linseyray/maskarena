@@ -486,9 +486,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colors:
   - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0, g: 0.83448267, b: 1, a: 1}
+  - {r: 0, g: 0.6275863, b: 1, a: 1}
   - {r: 0, g: 1, b: 0.17241383, a: 1}
-  - {r: 0.90344834, g: 1, b: 0, a: 1}
+  - {r: 0.99607843, g: 0.4862745, b: 0.007843138, a: 1}
   startNrLives: 5
   bodyRenderer: {fileID: 212000013606345432}
   maskRenderer: {fileID: 212000011667258620}
@@ -505,6 +505,8 @@ MonoBehaviour:
   shadow: {fileID: 1000012077861838}
   hitCollider: {fileID: 1000010639610482}
   holeCollider: {fileID: 1000012623491386}
+  livesController: {fileID: 114000010131910366, guid: 61e5224e9b1cd5a478c780eb7d5579f2,
+    type: 2}
 --- !u!212 &212000010792669554
 SpriteRenderer:
   m_ObjectHideFlags: 1

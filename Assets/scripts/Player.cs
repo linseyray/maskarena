@@ -8,6 +8,7 @@ public class Player : MonoBehaviour {
 	private PlayerState currentState = PlayerState.IDLE;
 
 	private string playerName;
+	private int playerNumber;
 	public List<Color> colors;
 
 	public int startNrLives;
@@ -41,6 +42,8 @@ public class Player : MonoBehaviour {
 	public GameObject hitCollider;
 	public GameObject holeCollider;
 
+	public LivesController livesController;
+
 	void Awake() {
 		playerController = gameObject.GetComponent<PlayerController>();
 		animator = gameObject.GetComponentInChildren<Animator>();
@@ -49,6 +52,7 @@ public class Player : MonoBehaviour {
 
 	void Start () {
 		nrLives = startNrLives;
+		livesController.SetNrLives(nrLives); // Spawns the UI elements
 	}
 
 	void Update () {
@@ -56,6 +60,7 @@ public class Player : MonoBehaviour {
 			timeTillDeath -= Time.deltaTime;
 			if (timeTillDeath <= 0) {
 				nrLives--;
+				livesController.TakeLife(playerNumber);
 				StopFalling();
 				if (nrLives > 0) {
 					// Respawn
@@ -78,6 +83,7 @@ public class Player : MonoBehaviour {
 	}
 
 	public void SetNumber(int number) {
+		playerNumber = number;
 		playerController.SetupMovementLabels(number);
 		bodyRenderer.color = colors[number-1];
 	}
@@ -104,8 +110,10 @@ public class Player : MonoBehaviour {
 
 		// make player fall behind platform
 		Debug.Log(tag);
-		if (tag == "TopTrigger")
+		if (tag == "TopTrigger") {
 			bodyRenderer.sortingLayerName = "FallingObjects";
+			maskRenderer.sortingLayerName = "FallingObjects";
+		}
 	}
 
 	private void StopFalling() {
@@ -114,6 +122,7 @@ public class Player : MonoBehaviour {
 		rigidBody2D.gravityScale = 0;
 		shadow.SetActive(true);
 		bodyRenderer.sortingLayerName = "Players";
+		maskRenderer.sortingLayerName = "Players";
 		ShakeCamera();
 		hitCollider.SetActive(true);
 		holeCollider.SetActive(true);
