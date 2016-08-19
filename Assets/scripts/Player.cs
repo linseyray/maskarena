@@ -71,6 +71,7 @@ public class Player : MonoBehaviour {
 			timeTillDeath -= Time.deltaTime;
 			if (timeTillDeath <= 0) {
 				nrLives--;
+				Debug.Log(playerNumber);
 				livesController.SetLives(playerNumber, nrLives);
 				StopFalling();
 				if (nrLives > 0) {

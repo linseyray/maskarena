@@ -6,6 +6,8 @@ public class ObjectSpawner : MonoBehaviour {
 
 	public GameObject objectPrefab;
 
+	public Transform[] playerSpawningPoints;
+
 	private List<Vector2> playerStartingPositions;
 
 	void Start () {
@@ -51,6 +53,7 @@ public class ObjectSpawner : MonoBehaviour {
 	}
 
 	private Vector2 FixedPosition(int index) {
-		return playerStartingPositions[index];
+		//return playerStartingPositions[index];
+		return playerSpawningPoints[index].position;
 	}
 }
