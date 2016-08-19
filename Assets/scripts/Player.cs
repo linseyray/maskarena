@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Player : MonoBehaviour {
 
-	public enum PlayerState { IDLE = 0, RUNNING = 1, DASHING = 2, FALLING = 3, DEAD };
+	public enum PlayerState { IDLE = 0, RUNNING = 1, DASHING = 2, FALLING = 3, DEAD = 99 };
 	private PlayerState currentState = PlayerState.IDLE;
 
 	private string playerName;
@@ -33,7 +33,6 @@ public class Player : MonoBehaviour {
 	private float maskTimeLeft;
 	public Mask.TYPES maskType;
 
-	public int score {get;set;}
 	public Sprite[] masks;
 	public Sprite emptymask;
 
@@ -46,6 +45,9 @@ public class Player : MonoBehaviour {
 	private float specialAbilityCooldown = 0;
 	private bool specialAbilityReady = true;
 	public GameObject bulletPrefab;
+	public GameObject bombPrefab;
+	public GameObject EggPrefab;
+
 	private LivesController livesController;
 
 	void Awake() {
@@ -103,6 +105,9 @@ public class Player : MonoBehaviour {
 		playerController.SetupMovementLabels(number);
 		bodyRenderer.color = colors[number-1];
 	}
+	public int GetNumber() {
+		return playerNumber;
+	}
 
 	public void GoToState(PlayerState newState) {
 		animator.SetInteger("state", (int) newState);
@@ -157,7 +162,6 @@ public class Player : MonoBehaviour {
 		maskTimeLeft = defaultMaskTimeout;
 		// idea: if(type == Mask.TYPES.specialLongDurationMask) maskTimeLeft = 3*defaultMaskTimeout;
 
-		// TODO: add mask sprite to player object
 		maskRenderer.sprite = Sprite.Instantiate(masks[(int)type]);
 		maskRenderer.enabled = true;
 		hasMask = true;
@@ -174,7 +178,6 @@ public class Player : MonoBehaviour {
 		hasMask = false;
 		// for now make mask invisible
 		maskRenderer.sprite = Sprite.Instantiate(emptymask);
-		// TODO: remove mask sprite from player object
 		specialAbilityReady = false;
 		MuteTrack();
 
@@ -191,16 +194,18 @@ public class Player : MonoBehaviour {
 					break;
 			case Mask.TYPES.CACTUS:
 				break;
+			case Mask.TYPES.BOMB:
+					layBomb();
+					break;
+			case Mask.TYPES.CHICKEN:
+					shootEgg();
+					break;
 			default:
 				break;
 			}
 			specialAbilityReady = false;
 			specialAbilityCooldown = sa_cooldownDuration;
 		}
-	}
-
-	public void increaseScore() {
-		this.score += 1;
 	}
 
 	// Players takes a hit through dashes, boomerangs, projectiles....
@@ -236,5 +241,15 @@ public class Player : MonoBehaviour {
 				}
 			}
 		}
+	}
+	private void layBomb() {
+		GameObject bomb = GameObject.Instantiate(bombPrefab);
+		bomb.transform.position = transform.position;
+	}
+	private void shootEgg() {
+		GameObject bullet = GameObject.Instantiate(EggPrefab);
+		Vector2 direction = -rigidBody2D.velocity.normalized;
+		bullet.GetComponent<Bullet>().direction = direction;
+		bullet.transform.position = transform.position + (Vector3) direction;
 	}
 }
