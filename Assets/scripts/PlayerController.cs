@@ -118,6 +118,6 @@ public class PlayerController : MonoBehaviour {
 	private void FlipSprite() {
 		facingLeft	= !facingLeft;
 		bodyRenderer.flipX = facingLeft;
-		//maskRenderer.flipX = facingRight;
+		maskRenderer.flipX = facingLeft;
 	}
 }
