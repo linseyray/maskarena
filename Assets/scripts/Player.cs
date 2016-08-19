@@ -46,7 +46,7 @@ public class Player : MonoBehaviour {
 	private float specialAbilityCooldown = 0;
 	private bool specialAbilityReady = true;
 	public GameObject bulletPrefab;
-	public LivesController livesController;
+	private LivesController livesController;
 
 	void Awake() {
 		playerController = gameObject.GetComponent<PlayerController>();
@@ -56,11 +56,14 @@ public class Player : MonoBehaviour {
 
 	void Start () {
 	}
-
-
+		
 	public void SetMaxNrLives(int lives) {
 		startNrLives = lives;
 		nrLives = lives;
+	}
+
+	public void SetLivesController(LivesController c) {
+		livesController = c;
 	}
 
 	void Update () {

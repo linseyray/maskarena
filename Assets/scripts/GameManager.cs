@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour {
 	private List<GameObject> players;
 
 	private ObjectSpawner objectSpawner;
+
+	public GameObject uiHealthPrefab;
 	private LivesController livesController;
 
 	public Gamestates gamestate;
@@ -24,13 +26,12 @@ public class GameManager : MonoBehaviour {
 
 	void Awake() {
 		objectSpawner = (ObjectSpawner) gameObject.GetComponent<ObjectSpawner>();
-		livesController = gameObject.GetComponentInChildren<LivesController>();
 	}
 
 	void Start () {
 		players = new List<GameObject>();
+		SpawnUI();
 		SpawnPlayers();
-		livesController.SetMaxNrLives(maxNrLives); // Spawns the UI elements
 	}
 
 	void Update () {
@@ -78,8 +79,14 @@ public class GameManager : MonoBehaviour {
 			GameObject player = objectSpawner.SpawnObjectFixed (i);
 			player.GetComponent<Player>().SetNumber(i+1);
 			player.GetComponent<Player>().SetMaxNrLives(maxNrLives);
+			player.GetComponent<Player>().SetLivesController(livesController);
 			players.Add(player);
 		}
+	}
+
+	private void SpawnUI() {
+		livesController = Instantiate(uiHealthPrefab).GetComponent<LivesController>();
+		livesController.SetMaxNrLives(maxNrLives);
 	}
 
 	private void StartRound() {

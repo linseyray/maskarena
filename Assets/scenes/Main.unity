@@ -193,11 +193,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!4 &107762397 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4000014219194054, guid: 61e5224e9b1cd5a478c780eb7d5579f2,
-    type: 2}
-  m_PrefabInternal: {fileID: 343413066}
 --- !u!1 &149849936
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,78 +463,6 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
---- !u!1001 &343413066
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1909934992}
-    m_Modifications:
-    - target: {fileID: 4000014219194054, guid: 61e5224e9b1cd5a478c780eb7d5579f2, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000014219194054, guid: 61e5224e9b1cd5a478c780eb7d5579f2, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000014219194054, guid: 61e5224e9b1cd5a478c780eb7d5579f2, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000014219194054, guid: 61e5224e9b1cd5a478c780eb7d5579f2, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000014219194054, guid: 61e5224e9b1cd5a478c780eb7d5579f2, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000014219194054, guid: 61e5224e9b1cd5a478c780eb7d5579f2, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000014219194054, guid: 61e5224e9b1cd5a478c780eb7d5579f2, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000014219194054, guid: 61e5224e9b1cd5a478c780eb7d5579f2, type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 212000012202229694, guid: 61e5224e9b1cd5a478c780eb7d5579f2,
-        type: 2}
-      propertyPath: m_SortingOrder
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 212000011531026436, guid: 61e5224e9b1cd5a478c780eb7d5579f2,
-        type: 2}
-      propertyPath: m_SortingOrder
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 212000010818999740, guid: 61e5224e9b1cd5a478c780eb7d5579f2,
-        type: 2}
-      propertyPath: m_SortingOrder
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 212000011401079886, guid: 61e5224e9b1cd5a478c780eb7d5579f2,
-        type: 2}
-      propertyPath: m_SortingOrder
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 212000010959811962, guid: 61e5224e9b1cd5a478c780eb7d5579f2,
-        type: 2}
-      propertyPath: m_SortingOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000010131910366, guid: 61e5224e9b1cd5a478c780eb7d5579f2,
-        type: 2}
-      propertyPath: maxNrLives
-      value: 5
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 61e5224e9b1cd5a478c780eb7d5579f2, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &358277990
 GameObject:
   m_ObjectHideFlags: 0
@@ -1476,11 +1399,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1909934991}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.3263278, y: -0.6143276, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children:
-  - {fileID: 107762397}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
 --- !u!114 &1909934993
@@ -1509,7 +1431,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nrPlayers: 4
   maxNrLives: 5
-  livesController: {fileID: 0}
+  uiHealthPrefab: {fileID: 1000011699940146, guid: 61e5224e9b1cd5a478c780eb7d5579f2,
+    type: 2}
   gamestate: 0
   WINNING_SCORE: 3
 --- !u!114 &1909934995
