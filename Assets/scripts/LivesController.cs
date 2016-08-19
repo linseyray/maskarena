@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class LivesController : MonoBehaviour {
 
-	public bool initialised = false;
+	public bool isInitialised = false;
 
 	public int maxNrLives;
 	public GameObject fullHeartPrefab;
@@ -32,7 +32,7 @@ public class LivesController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (!initialised) {
+		if (!isInitialised) {
 			// Instantiate the hearts
 			for (int i = 0; i < 4; i++) {
 				for (int j = 0; j < this.maxNrLives; j++) {
@@ -47,17 +47,16 @@ public class LivesController : MonoBehaviour {
 				}
 			}
 			Debug.Log("Initialised");
-			initialised = true;
+			isInitialised = true;
 		}
 	}
 
 	public void SetLives(int playerNumber, int nrLives) {
-		if (!initialised) {
+		if (!isInitialised) {
 			Debug.Log("returning");
 			return;
 		}
 		
-		Debug.Log("nrLives " + nrLives);
 		for (int i = 0; i < fullHearts.Length; i++) {
 			if (i+1 <= nrLives) {
 				fullHearts[playerNumber-1][i].SetActive(true);
@@ -72,7 +71,7 @@ public class LivesController : MonoBehaviour {
 	}
 
 	// Set from Player.cs
-	public void SetNrLives(int lives) {
+	public void SetMaxNrLives(int lives) {
 		this.maxNrLives = lives;
 	}
 }
