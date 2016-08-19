@@ -122,7 +122,7 @@ public class Player : MonoBehaviour {
 		rigidBody2D.gravityScale = 0;
 		shadow.SetActive(true);
 		bodyRenderer.sortingLayerName = "Players";
-		maskRenderer.sortingLayerName = "Players";
+		maskRenderer.sortingLayerName = "Masks";
 		ShakeCamera();
 		hitCollider.SetActive(true);
 		holeCollider.SetActive(true);

@@ -117,8 +117,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 1192603496}
-  m_RootOrder: 7
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
 --- !u!82 &39042961
 AudioSource:
   m_ObjectHideFlags: 0
@@ -373,7 +373,7 @@ GameObject:
   - 4: {fileID: 284557635}
   - 212: {fileID: 284557634}
   m_Layer: 0
-  m_Name: arena_stones_background
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -424,7 +424,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 1
 --- !u!1 &326203603
 GameObject:
   m_ObjectHideFlags: 0
@@ -646,7 +646,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000011464300724, guid: 12d0abc8825a148fc8b489e17f7e4444, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d0abc8825a148fc8b489e17f7e4444, type: 2}
@@ -1008,7 +1008,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012411738458, guid: 68e564d1321a4432cbb06735c89c310f, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 68e564d1321a4432cbb06735c89c310f, type: 2}
@@ -1050,7 +1050,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000010481035710, guid: 307dd033777044ff69ae5f246a49b05b, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 307dd033777044ff69ae5f246a49b05b, type: 2}
@@ -1087,7 +1087,7 @@ Transform:
   - {fileID: 1536531973}
   - {fileID: 404710368}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!95 &1516256583
 Animator:
   serializedVersion: 3
@@ -1161,7 +1161,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1975818983
+  m_SortingLayerID: -196142469
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b2cc3081c11d11d4993dc11c85dc75d4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1346,7 +1346,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012411738458, guid: 68e564d1321a4432cbb06735c89c310f, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1000013044915870, guid: 68e564d1321a4432cbb06735c89c310f, type: 2}
       propertyPath: m_Name
@@ -1472,7 +1472,7 @@ Transform:
   m_Children:
   - {fileID: 107762397}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!114 &1909934993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1556,7 +1556,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000011464300724, guid: 12d0abc8825a148fc8b489e17f7e4444, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1000012319473636, guid: 12d0abc8825a148fc8b489e17f7e4444, type: 2}
       propertyPath: m_Name
