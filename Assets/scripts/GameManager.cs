@@ -6,17 +6,17 @@ public class GameManager : MonoBehaviour {
 
 	public int nrPlayers;
 	public int maxNrLives;
-
-	private List<GameObject> players;
-	private int[] playerScores;
-
-	private ObjectSpawner objectSpawner;
-
-	public GameObject uiHealthPrefab;
-	private LivesController livesController;
-
 	public Gamestates gamestate;
 	public int WINNING_SCORE = 3;
+	public GameObject uiHealthPrefab;
+	public GameObject winnerBackgroundGameObject;
+
+	private Player winnerPlayer;
+	private List<GameObject> players;
+	private int[] playerScores;
+	private ObjectSpawner objectSpawner;
+	private LivesController livesController;
+	private WinnerSplash winnerBackground;
 
 	public enum Gamestates {
 		LOBBY,
@@ -33,29 +33,31 @@ public class GameManager : MonoBehaviour {
 		for(int i = 0; i < nrPlayers; i++) {
 			playerScores[i] = 0;
 		}
+		winnerBackground = (WinnerSplash)winnerBackgroundGameObject.gameObject.GetComponent<WinnerSplash> ();
 	}
 
 	void Start () {
-		StartRound();
+		StartLobby();
 	}
 
 	void Update () {
 		switch(gamestate) {
 		case Gamestates.ROUND: {
-				int numberOfPlayersAlive = 0;
+				List<GameObject> alivePlayers = new List<GameObject>(); 
 				int lastStandingIndex = -1;
 				foreach (var p in players) {
-					Debug.Log(p);
 					if(p.GetComponent<Player>().GetCurrentState()!=Player.PlayerState.DEAD) {
-						numberOfPlayersAlive++;
+						alivePlayers.Add (p);
 						lastStandingIndex = p.GetComponent<Player>().GetNumber()-1;
 					}
 				}
+				int numberOfPlayersAlive = alivePlayers.Count;
 				Debug.Log(string.Format("%d alive Players in scene.", numberOfPlayersAlive));
-				if(numberOfPlayersAlive < 2) {
+				if(numberOfPlayersAlive <= 1) {
 					playerScores[lastStandingIndex]++;
 					foreach (var score in playerScores) {
 						if(score >= WINNING_SCORE) {
+							winnerPlayer = alivePlayers [0].GetComponent<Player>();
 							gamestate = Gamestates.WINNNGMATCH;
 						} else {
 							gamestate = Gamestates.WINNINGROUND;
@@ -66,7 +68,6 @@ public class GameManager : MonoBehaviour {
 				break;
 			}
 		case Gamestates.LOBBY: {
-				// TODO: implement lobby logic (adding players, waiting for all to wear a mask)
 				ShowCountdown();
 				Invoke("StartRound", 2.5f);
 				gamestate = Gamestates.IDLE;
@@ -80,6 +81,7 @@ public class GameManager : MonoBehaviour {
 			}
 		case Gamestates.WINNNGMATCH: {
 				// TODO: show winning player for 10 seconds
+				ShowWinner(winnerPlayer);
 				Invoke("StartLobby", 10f);
 				gamestate = Gamestates.IDLE;
 				break;
@@ -91,6 +93,13 @@ public class GameManager : MonoBehaviour {
 	private void ShowCountdown() {
 		Countdown countdown = GameObject.Find ("Countdown").GetComponent<Countdown>();
 		countdown.Show ();
+	}
+
+	private void ShowWinner(Player winnerPlayer) {
+		GameObject winnerScreen = winnerPlayer.GetWinnerScreen ();
+		WinnerSplash splash = (WinnerSplash)winnerScreen.GetComponent("WinnerSplash");
+		winnerBackground.Show ();
+		splash.Show ();
 	}
 
 	private void SpawnPlayers() {

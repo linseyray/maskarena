@@ -48,6 +48,9 @@ public class Player : MonoBehaviour {
 	public GameObject bombPrefab;
 	private LivesController livesController;
 
+	public GameObject[] winnerScreens;
+	private GameObject winnerScreen;
+
 	void Awake() {
 		playerController = gameObject.GetComponent<PlayerController>();
 		animator = gameObject.GetComponentInChildren<Animator>();
@@ -103,7 +106,9 @@ public class Player : MonoBehaviour {
 		playerNumber = number;
 		playerController.SetupMovementLabels(number);
 		bodyRenderer.color = colors[number-1];
+		winnerScreen = winnerScreens [number - 1];
 	}
+
 	public int GetNumber() {
 		return playerNumber;
 	}
@@ -167,6 +172,10 @@ public class Player : MonoBehaviour {
 		specialAbilityReady = true;
 		specialAbilityCooldown = sa_cooldownDuration;
 		UnmuteTrack ();
+	}
+
+	public GameObject GetWinnerScreen() {
+		return winnerScreen;
 	}
 
 	private void removeMask(){
