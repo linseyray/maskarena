@@ -46,6 +46,8 @@ public class Player : MonoBehaviour {
 	private bool specialAbilityReady = true;
 	public GameObject bulletPrefab;
 	public GameObject bombPrefab;
+	public GameObject EggPrefab;
+
 	private LivesController livesController;
 
 	void Awake() {
@@ -190,6 +192,11 @@ public class Player : MonoBehaviour {
 					layBomb();
 					break;
 				}
+			case Mask.TYPES.CHICKEN:
+				{
+					shootEgg();
+					break;
+				}
 			default:
 				break;
 			}
@@ -235,5 +242,11 @@ public class Player : MonoBehaviour {
 	private void layBomb() {
 		GameObject bomb = GameObject.Instantiate(bombPrefab);
 		bomb.transform.position = transform.position;
+	}
+	private void shootEgg() {
+		GameObject bullet = GameObject.Instantiate(EggPrefab);
+		Vector2 direction = -rigidBody2D.velocity.normalized;
+		bullet.GetComponent<Bullet>().direction = direction;
+		bullet.transform.position = transform.position + (Vector3) direction;
 	}
 }

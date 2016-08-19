@@ -511,6 +511,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1000013117017776, guid: ff783400becf6442c86ccd9f9e877555,
     type: 2}
   bombPrefab: {fileID: 1000010721714146, guid: bb120c765c7e142d2852d413e0390eaa, type: 2}
+  EggPrefab: {fileID: 1000012294004238, guid: 2e34b783447c04bcba5afcc465f10f48, type: 2}
 --- !u!114 &114000012182716192
 MonoBehaviour:
   m_ObjectHideFlags: 1
