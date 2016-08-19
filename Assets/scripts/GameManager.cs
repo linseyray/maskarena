@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour {
 			}
 		case Gamestates.LOBBY: {
 				// TODO: implement lobby logic (adding players, waiting for all to wear a mask)
+				Invoke("StartRound", 2f);
 				break;
 			}
 		case Gamestates.WINNINGROUND: {
