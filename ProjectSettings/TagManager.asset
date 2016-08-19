@@ -12,6 +12,7 @@ TagManager:
   - SideTrigger
   - BottomTrigger
   - bullet
+  - bomb
   layers:
   - Default
   - TransparentFX
