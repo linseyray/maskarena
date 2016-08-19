@@ -161,7 +161,6 @@ public class Player : MonoBehaviour {
 		maskTimeLeft = defaultMaskTimeout;
 		// idea: if(type == Mask.TYPES.specialLongDurationMask) maskTimeLeft = 3*defaultMaskTimeout;
 
-		// TODO: add mask sprite to player object
 		maskRenderer.sprite = Sprite.Instantiate(masks[(int)type]);
 		maskRenderer.enabled = true;
 		hasMask = true;
@@ -174,7 +173,6 @@ public class Player : MonoBehaviour {
 		hasMask = false;
 		// for now make mask invisible
 		maskRenderer.sprite = Sprite.Instantiate(emptymask);
-		// TODO: remove mask sprite from player object
 		specialAbilityReady = false;
 		MuteTrack();
 	}
